@@ -1,0 +1,27 @@
+.parallax {
+  width: 100%;
+  height: 100vh; 
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+
+  h1 {
+    font-size: 100px;
+    z-index: 5;
+    position: relative;
+    color: white; 
+  }
+
+  .paraimg {
+    background-image: url("../parallax/web1.png");
+    background-size: cover; 
+    background-position: center; 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    opacity: 0.9;
+  }
+}
