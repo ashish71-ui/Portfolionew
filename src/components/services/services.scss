@@ -1,0 +1,100 @@
+.services{
+    background: linear-gradient(180deg,#0c0c1d,#111132);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .textContainer{
+        flex: 1;
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        p{
+            font-weight: 200;
+            font-size: 20px;
+            color: gray;
+            text-align: right;
+        }
+        hr{
+            width: 200px;
+            border: none;
+            border-top: 0.5px solid gray;
+        }
+    }
+    .titleContainer {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px; 
+       
+        color: #FFFFFF; 
+    }
+    
+    .title {
+        align-items: center;
+        text-align: center; 
+        max-width: 966px; 
+        margin-bottom: 40px; 
+        
+        line-height: 1.6; 
+    }
+    .title:hover{
+        color: orange;
+        cursor: pointer;
+    }
+    .title h1 {
+        font-size: 24px; 
+        font-weight: 400; 
+    }
+    
+    button {
+        width: 450px; 
+        padding: 20px;
+      
+        border-radius: 16px; 
+        background-color:orange; 
+        border: none;
+        font-size: 28px; 
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+    }
+    
+    button:hover {
+        background-color: #FF4500; 
+    }
+    
+    .listContainer{
+        flex: 2;
+        display: flex;
+        flex-direction: row;
+        max-width: 1166px;
+        margin: auto;
+        .box {
+            padding: 30px;
+            border: 0.5px solid gray;
+            display: flex;
+            flex-direction: column;
+            // justify-content: space-between;
+            transition: background-color 0.3s ease, color 0.3s ease; 
+            h2{
+                color: orange;
+                margin-top: 5px;
+                
+              }
+              p{
+                margin-top: 25px;
+              }
+          }
+          
+          
+          
+          .box:hover {
+            background-color: lightgray;
+            color: black;
+            cursor: pointer;
+          }
+          
+    }
+}
