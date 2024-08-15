@@ -1,24 +1,19 @@
-// Variables
-$primary-color: #fff; 
-
+$primary-color: #fff;
 
 .navbar {
-  
   max-width: 1366px;
- margin-left: 20px;
+  margin-left: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100px;
- 
-  
 
-  
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   .logo {
     margin-top: 90px;
-    
-    
   }
 
   .nav-links {
@@ -26,11 +21,9 @@ $primary-color: #fff;
       list-style: none;
       display: flex;
       margin: 0;
-      padding: 0;
-      
 
       li {
-        margin-left: 2rem;
+        margin-left: 1rem;
 
         a {
           text-decoration: none;
@@ -38,12 +31,12 @@ $primary-color: #fff;
           font-size: 1rem;
           transition: color 0.3s ease;
           font-size: large;
-          
+
           font-weight: bold;
           padding: 16px;
 
           &:hover {
-            color: #ccc; 
+            color: #ccc;
           }
         }
       }

@@ -15,13 +15,13 @@
   }
 
   .paraimg {
-    // background-image: url("../parallax/web1.png");
+    background-image: url("../parallax/aboutme.jpeg");
     background-size: cover; 
     background-position: center; 
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 2;
-    opacity: 0.9;
+    opacity: 1;
   }
 }

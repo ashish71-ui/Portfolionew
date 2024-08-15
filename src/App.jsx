@@ -3,6 +3,7 @@ import Hero from "./components/hero/Hero"
 import Parallax from "./components/parallax/parallax"
 import Services from "./components/services/Services"
 import "./app.scss"
+import Skills from "./components/skills/Skills"
 function App() {
   
   return (
@@ -13,7 +14,7 @@ function App() {
 </section>
 <section id="Parallax"><Parallax type="aboutme"/></section>
 <section id="Aboutme"><Services/></section>
-<section id="Projects"><Parallax type="projects"/></section>
+<section id="Projects"><Skills/></section>
 <section id="Project1">Project1</section>
 <section>Project2</section>
 <section>Project3</section>

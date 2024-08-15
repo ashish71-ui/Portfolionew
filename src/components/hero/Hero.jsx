@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion'; // Import motion
+import { motion } from 'framer-motion'; 
 import './hero.scss';
 import Ashish from '../hero/ashish.png';
 import Resume from '../hero/resume.png';
 
-// Define textVariants outside the component
+
 const textVariants = {
     initial: {
         x: -500,

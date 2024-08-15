@@ -20,6 +20,7 @@ const Navbar = () => {
     <ul>
         <li><a href="#HomePage">Home</a></li>
         <li><a href="#Aboutme">About</a></li>
+        <li><a href="#Aboutme">Skills</a></li>
         <li><a href="#Project1">Projects</a></li>
         <li><a href="#Contact">Contact</a></li>
         <li><a href="#Blogs">Blogs</a></li>
