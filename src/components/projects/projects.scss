@@ -1,0 +1,160 @@
+.projects {
+    padding: 20px;
+}
+
+.navbar-space {
+    height: 80px; 
+    width: 100%;
+}
+
+.myproject {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 80px;
+    color: orange;
+}
+
+.project-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px solid orange;
+    border-radius: 40px;
+    padding: 20px;
+    margin: 5px;
+    width: 45%; 
+    height: 450px;
+    
+    
+    --border-angle: 0turn; // For animation.
+  --main-bg: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 5%,
+      #112 60%,
+      #213 95%
+    );
+  
+  border: solid 2px transparent;
+  border-radius: 2em;
+  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, orange, #f03 99%, transparent);
+  
+  background: 
+    // padding-box clip this background in to the overall element except the border.
+    var(--main-bg) padding-box,
+    // border-box extends this background to the border space
+    var(--gradient-border) border-box, 
+    // Duplicate main background to fill in behind the gradient border. You can remove this if you want the border to extend "outside" the box background.
+    var(--main-bg) border-box;
+  
+  background-position: center center;
+
+  animation: bg-spin 6s linear infinite;
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+
+.project-card p {
+    text-align: center;
+    font-size: 1rem;
+    flex-grow: 1; 
+    margin: 5px 0;
+    overflow: hidden;
+
+}
+
+.project-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.project-buttons button {
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    margin-right: 20px;
+ 
+    cursor: pointer;
+}
+
+.project-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.project-card img {
+    width: 60%;
+    height: 200px; 
+    object-fit: cover; 
+    margin-bottom: 15px;
+}
+
+
+.project-card h2 {
+    font-size: 30px;
+    color: orange;
+}
+
+.project-card p {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color:white;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    width: 200px;
+}
+
+.prev-button {
+    background-color: #f0ad4e;
+}
+
+.next-button {
+    background-color: #5bc0de;
+}
+
+.prev-button:hover {
+    background-color: #ec971f;
+}
+
+.next-button:hover {
+    background-color: #31b0d5;
+}

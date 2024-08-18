@@ -19,6 +19,7 @@ const Parallax = ({ type }) => {
         : "linear-gradient(180deg,#111132,#505064)"
     }}>
       <motion.h1 style={{ y: yText }}>{type === 'aboutme' ? "About Me" : 'My Projects'}</motion.h1>
+      
       <motion.div className="paraimg" style={{ y: yBg }}>
        
       </motion.div>

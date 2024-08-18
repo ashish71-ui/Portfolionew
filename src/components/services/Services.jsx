@@ -27,11 +27,7 @@ const Services = () => {
       whileInView="animate"
     >
       <motion.div className="textContainer" variants={variants}>
-        <p>
-          {/* Eager to learn and take on challenges to broaden <br /> my knowledge
-          in this ever-evolving field */}
-          About Me
-        </p>
+        
         <hr />
       </motion.div>
       <motion.div className="titleContainer" variants={variants}>

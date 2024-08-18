@@ -7,16 +7,20 @@ $primary-color: #fff;
   justify-content: space-between;
   align-items: center;
   height: 100px;
-
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: relative;
+  
+  
 
   .logo {
     margin-top: 90px;
   }
 
   .nav-links {
+ position: fixed;
+ top: 20;
+ left: 750px;
+ 
+ z-index: 100;
     ul {
       list-style: none;
       display: flex;
@@ -28,12 +32,12 @@ $primary-color: #fff;
         a {
           text-decoration: none;
           color: $primary-color;
-          font-size: 1rem;
+          font-size: 28px;
           transition: color 0.3s ease;
-          font-size: large;
-
+          
+font-family: cursive;
           font-weight: bold;
-          padding: 16px;
+          padding: 12px;
 
           &:hover {
             color: #ccc;

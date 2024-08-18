@@ -12,7 +12,7 @@ import {
 import { SiDjango } from "react-icons/si";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-// Variants for fade-in animation
+
 const variants = {
   initial: { opacity: 0, y: 0 },
   animate: {
