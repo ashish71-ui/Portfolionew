@@ -1,5 +1,6 @@
 .services{
-    background: linear-gradient(180deg,#0c0c1d,#111132);
+    // background: linear-gradient(180deg,#0c0c1d,#111132);
+    background-color: #0c0c1d;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -27,25 +28,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         padding: 20px; 
        
         color: #FFFFFF; 
     }
     
-    .title {
-        align-items: center;
-        text-align: center; 
-        max-width: 966px; 
-        margin-bottom: 20px; 
-        color: white;
-        line-height: 1.6; 
-    }
-   
-    .title h1 {
-        font-size: 24px; 
-        font-weight: 400; 
-        color: white;
-    }
+    
     .title h1:hover{
         color: orange;
         cursor: pointer;
@@ -53,18 +42,18 @@
     
     button {
         width: 450px; 
-        padding: 20px;
+        padding: 30px;
       
         border-radius: 16px; 
         background-color:orange; 
         border: none;
-        font-size: 28px; 
+        font-size: 32px; 
         cursor: pointer;
         transition: background-color 0.3s ease; 
     }
     
     button:hover {
-        background-color: #FF4500; 
+        background-color:white; 
     }
     
     .listContainer{
@@ -73,7 +62,7 @@
         flex-direction: row;
         max-width: 1166px;
         margin: auto;
-        margin-bottom: 15px;
+        margin-bottom: 55px;
         .box {
             padding: 30px;
             border: 0.5px solid gray;
@@ -82,12 +71,13 @@
             // justify-content: space-between;
             transition: background-color 0.3s ease, color 0.3s ease; 
             h2{
-                color: rebeccapurple;
-                margin-top: 5px;
+                // color: white;
+                margin-top: 2px;
                 
               }
               p{
                 margin-top: 25px;
+                letter-spacing: 1px;
               }
           }
           

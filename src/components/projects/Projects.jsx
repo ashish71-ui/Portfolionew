@@ -102,7 +102,7 @@ const Projects = () => {
 
   return (
     <div className="projects">
-      <div className="navbar-space"></div> {/* Space for Navbar */}
+      <div className="navbar-space"></div> 
       <div className="myproject">
         <h1>My Work</h1>
       </div>

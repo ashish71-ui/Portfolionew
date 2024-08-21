@@ -14,7 +14,8 @@
 
 h1 {
     font-size: 80px;
-    color: orange;
+    color:white;
+    font-family: cursive;
 }
 
 .project-list {
@@ -27,54 +28,54 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 0.5px solid orange;
-    border-radius: 40px;
+    border: 0.5px solid gray;
+    border-radius: 20px;
     padding: 20px;
     margin: 5px;
-    width: 45%; 
+    width: 40%; 
     height: 450px;
     
     
-    --border-angle: 0turn; // For animation.
-  --main-bg: conic-gradient(
-      from var(--border-angle),
-      #213,
-      #112 5%,
-      #112 60%,
-      #213 95%
-    );
+//     --border-angle: 0turn; // For animation.
+//   --main-bg: conic-gradient(
+//       from var(--border-angle),
+//       #213,
+//       #112 5%,
+//       #112 60%,
+//       #213 95%
+//     );
   
-  border: solid 2px transparent;
-  border-radius: 2em;
-  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, orange, #f03 99%, transparent);
+//   border: solid 2px transparent;
+//   border-radius: 2em;
+//   --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, orange, #f03 99%, transparent);
   
-  background: 
-    // padding-box clip this background in to the overall element except the border.
-    var(--main-bg) padding-box,
-    // border-box extends this background to the border space
-    var(--gradient-border) border-box, 
-    // Duplicate main background to fill in behind the gradient border. You can remove this if you want the border to extend "outside" the box background.
-    var(--main-bg) border-box;
+//   background: 
+//     // padding-box clip this background in to the overall element except the border.
+//     var(--main-bg) padding-box,
+//     // border-box extends this background to the border space
+//     var(--gradient-border) border-box, 
+//     // Duplicate main background to fill in behind the gradient border. You can remove this if you want the border to extend "outside" the box background.
+//     var(--main-bg) border-box;
   
-  background-position: center center;
+//   background-position: center center;
 
-  animation: bg-spin 6s linear infinite;
-  @keyframes bg-spin {
-    to {
-      --border-angle: 1turn;
-    }
-  }
+//   animation: bg-spin 6s linear infinite;
+//   @keyframes bg-spin {
+//     to {
+//       --border-angle: 1turn;
+//     }
+//   }
 
-  &:hover {
-    animation-play-state: paused;
-  }
-}
+//   &:hover {
+//     animation-play-state: paused;
+//   }
+// }
 
-@property --border-angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0turn;
-}
+// @property --border-angle {
+//   syntax: "<angle>";
+//   inherits: true;
+//   initial-value: 0turn;
+ }
 
 
 .project-card p {
@@ -105,7 +106,8 @@ h1 {
 }
 
 .project-buttons button:hover {
-    background-color: #0056b3;
+    background-color:white;
+    color: black;
 }
 
 .project-card img {
@@ -132,7 +134,7 @@ h1 {
 }
 
 .pagination button {
-    padding: 10px 20px;
+    padding: 5px 5px;
     margin: 0 10px;
     cursor: pointer;
     border: none;

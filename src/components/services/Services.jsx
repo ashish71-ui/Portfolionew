@@ -31,15 +31,7 @@ const Services = () => {
         <hr />
       </motion.div>
       <motion.div className="titleContainer" variants={variants}>
-        <motion.div className="title">
-          <motion.h1>
-            As a computer engineering student, I have developed my skills to
-            craft interactive and functional web applications while exploring
-            new technologies. I am also passionate about exploring the latest
-            technologies in various IT-related fields to contribute to impactful
-            projects and achieve meaningful outcomes.
-          </motion.h1>
-        </motion.div>
+       
         <motion.button>Education and Experience</motion.button>
       </motion.div>
 

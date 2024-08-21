@@ -1,0 +1,137 @@
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 100vh;
+  
+    .contact-title {
+      font-size: 80px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-family: cursive;
+    }
+  
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      width: 100%;
+  
+      @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+  
+    .contact-details, .contact-form {
+      margin-top: 100px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 20px;
+  
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+      }
+    }
+  
+    .section-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #555;
+      font-weight: bold;
+    }
+  
+    .contact-info {
+      padding: 5px;
+      h1{
+        font-size: 30px;
+        color: orange;
+        margin-bottom: 10px;
+      }
+      .info-item {
+        display: flex;
+       padding: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: white;
+        .icons{
+          margin-right: 10px;
+        }
+  
+        i {
+          margin-right: 10px;
+          font-size: 1.25rem;
+          color: orange;
+        }
+      }
+    }
+  
+    .form {
+      display: flex;
+      flex-direction: column;
+  
+      input, textarea {
+        padding: 10px 15px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #333;
+  
+        &:focus {
+          border-color: #4299e1;
+          outline: none;
+        }
+      }
+    }
+  
+    .submit-button-container {
+      text-align: center;
+  
+      .submit-button {
+        padding: 5px;
+      width: 100%;
+        border-radius: 8px; 
+        background-color:orange; 
+        border: none;
+        font-size: 28px; 
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+  
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+  
+    .social-media-section {
+      margin-top: 20px;
+      text-align: center;
+  
+      .social-media-icons {
+        display: flex;
+        justify-content: start;
+        gap: 30px; 
+  
+        a {
+          font-size: 2rem;
+          color: white;
+          transition: color 0.3s ease;
+  
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  

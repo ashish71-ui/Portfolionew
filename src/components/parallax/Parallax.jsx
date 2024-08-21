@@ -19,7 +19,15 @@ const Parallax = ({ type }) => {
         : "linear-gradient(180deg,#111132,#505064)"
     }}>
       <motion.h1 style={{ y: yText }}>{type === 'aboutme' ? "About Me" : 'My Projects'}</motion.h1>
-      
+      <motion.div className="title">
+          <motion.h1 style={{ y: yText }}>
+            As a computer engineering student, I have developed my skills to
+            craft interactive and functional web applications while exploring
+            new technologies. I am also passionate about exploring the latest
+            technologies in various IT-related fields to contribute to impactful
+            projects and achieve meaningful outcomes.
+          </motion.h1>
+        </motion.div>
       <motion.div className="paraimg" style={{ y: yBg }}>
        
       </motion.div>

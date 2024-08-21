@@ -5,6 +5,7 @@ import Services from "./components/services/Services"
 import "./app.scss"
 import Skills from "./components/skills/Skills"
 import Projects from "./components/projects/Projects"
+import Contact from "./components/contact/Contact"
 function App() {
   
   return (
@@ -18,7 +19,7 @@ function App() {
 <section id="Projects"><Skills/></section>
 <section id="Project1"><Projects/></section>
 
-<section id="Contact">Contact</section>
+<section id="Contact"><Contact/></section>
 </>
   )
 }
