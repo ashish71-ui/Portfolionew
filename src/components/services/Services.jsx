@@ -32,8 +32,7 @@ const Services = () => {
       </motion.div>
       <motion.div className="titleContainer" variants={variants}>
        
-        <motion.button>Education and Experience</motion.button>
-      </motion.div>
+        <motion.button>Education and Experience</motion.button> </motion.div>
 
       <motion.div className="listContainer" variants={variants}>
         <motion.div className="box">

@@ -1,162 +1,178 @@
 .projects {
     padding: 20px;
-}
 
-.navbar-space {
-    height: 80px; 
-    width: 100%;
-}
+    .navbar-space {
+        height: 80px; 
+        width: 100%;
+    }
 
-.myproject {
-    text-align: center;
-    margin-bottom: 10px;
-}
+    .myproject {
+        text-align: center;
+        margin-bottom: 10px;
+    }
 
-h1 {
-    font-size: 80px;
-    color:white;
-    font-family: cursive;
-}
+    h1 {
+        font-size: 80px;
+        color:white;
+        font-family: cursive;
+    }
 
-.project-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
+    .project-list {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
 
-.project-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 0.5px solid gray;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 5px;
-    width: 40%; 
-    height: 450px;
-    
-    
-//     --border-angle: 0turn; // For animation.
-//   --main-bg: conic-gradient(
-//       from var(--border-angle),
-//       #213,
-//       #112 5%,
-//       #112 60%,
-//       #213 95%
-//     );
-  
-//   border: solid 2px transparent;
-//   border-radius: 2em;
-//   --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, orange, #f03 99%, transparent);
-  
-//   background: 
-//     // padding-box clip this background in to the overall element except the border.
-//     var(--main-bg) padding-box,
-//     // border-box extends this background to the border space
-//     var(--gradient-border) border-box, 
-//     // Duplicate main background to fill in behind the gradient border. You can remove this if you want the border to extend "outside" the box background.
-//     var(--main-bg) border-box;
-  
-//   background-position: center center;
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 0.5px solid gray;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 5px;
+        width: 40%; 
+        height: 450px;
+    }
 
-//   animation: bg-spin 6s linear infinite;
-//   @keyframes bg-spin {
-//     to {
-//       --border-angle: 1turn;
-//     }
-//   }
+    .project-card p {
+        text-align: center;
+        font-size: 1rem;
+        flex-grow: 1; 
+        margin: 5px 0;
+        overflow: hidden;
+    }
 
-//   &:hover {
-//     animation-play-state: paused;
-//   }
-// }
+    .project-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        width: 100%;
+    }
 
-// @property --border-angle {
-//   syntax: "<angle>";
-//   inherits: true;
-//   initial-value: 0turn;
- }
+    .project-buttons button {
+        padding: 20px;
+        border: 1px solid white;
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+        margin-right: 20px;
+        cursor: pointer;
+    }
 
+    .project-buttons button:hover {
+        background-color:white;
+        color: black;
+    }
 
-.project-card p {
-    text-align: center;
-    font-size: 1rem;
-    flex-grow: 1; 
-    margin: 5px 0;
-    overflow: hidden;
+    .project-card img {
+        width: 60%;
+        height: 200px; 
+        object-fit: cover; 
+        margin-bottom: 15px;
+    }
 
-}
+    .project-card h2 {
+        font-size: 30px;
+        color: orange;
+    }
 
-.project-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-    width: 100%;
-}
+    .pagination {
+        text-align: center;
+        margin-top: 20px;
+    }
 
-.project-buttons button {
-    padding: 20px;
-    border: 1px solid white;
-    border-radius: 10px;
-    background-color: transparent;
-    color: white;
-    margin-right: 20px;
- 
-    cursor: pointer;
-}
+    .pagination button {
+        padding: 5px 5px;
+        margin: 0 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color:white;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+        width: 200px;
+    }
 
-.project-buttons button:hover {
-    background-color:white;
-    color: black;
-}
+    .prev-button {
+        background-color: #f0ad4e;
+    }
 
-.project-card img {
-    width: 60%;
-    height: 200px; 
-    object-fit: cover; 
-    margin-bottom: 15px;
-}
+    .next-button {
+        background-color: #5bc0de;
+    }
 
+    .prev-button:hover {
+        background-color: #ec971f;
+    }
 
-.project-card h2 {
-    font-size: 30px;
-    color: orange;
-}
+    .next-button:hover {
+        background-color: #31b0d5;
+    }
 
-.project-card p {
-    text-align: center;
-    font-size: 1rem;
-}
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 40px;
+        }
 
-.pagination {
-    text-align: center;
-    margin-top: 20px;
-}
+        .project-list {
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
 
-.pagination button {
-    padding: 5px 5px;
-    margin: 0 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color:white;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-    width: 200px;
-}
+        .project-card {
+            width: 50%; 
+            height: 460px; 
+            padding: 10px;
+            margin: 10px 0;
+        }
 
-.prev-button {
-    background-color: #f0ad4e;
-}
+        .project-card img {
+            width: 50%;
+            height: 100px; 
+            margin-bottom: 10px;
+        }
 
-.next-button {
-    background-color: #5bc0de;
-}
+        .project-card h2 {
+            font-size: 16px;
+        }
 
-.prev-button:hover {
-    background-color: #ec971f;
-}
+        .project-card p{
+            font-size: 0.8rem;
+            height: auto; 
+            flex-grow: 1; 
+            
+            overflow: hidden;
+            
+            
+        }
 
-.next-button:hover {
-    background-color: #31b0d5;
+        .project-buttons{
+            padding: 10px;
+            justify-content: space-between;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
+
+        .project-buttons button {
+            padding: 10px;
+            margin-right: 0;
+            font-size: 0.8rem;
+        }
+
+        .pagination {
+            margin-top: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .pagination button {
+            height: 30px;
+            width: 100px;
+            font-size: 0.8rem;
+            padding: 5px;
+        }
+    }
 }

@@ -1,4 +1,5 @@
 $primary-color: #fff;
+$active-color: #ccc; 
 
 .navbar {
   max-width: 1366px;
@@ -8,19 +9,17 @@ $primary-color: #fff;
   align-items: center;
   height: 100px;
   position: relative;
-  
 
   .logo {
     margin-top: 90px;
   }
 
   .nav-links {
- position: fixed;
- top: 10;
- left: 820px;
+    position: fixed;
+    top: 30px; 
+    left: 840px;
+    z-index: 100;
 
- 
- z-index: 100;
     ul {
       list-style: none;
       display: flex;
@@ -32,13 +31,103 @@ $primary-color: #fff;
         a {
           text-decoration: none;
           color: $primary-color;
-         
           font-size: 28px;
           transition: color 0.3s ease;
-          
-// font-family: cursive;
           font-weight: bold;
           padding: 12px;
+
+          &:hover {
+            color: $active-color;
+          }
+
+          &.active {
+            color: $active-color;
+            background-color: black; 
+          }
+        }
+      }
+    }
+
+    hr {
+      margin: 5px;
+      height: 4px;
+      background-color: white;
+    }
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.hamburger {
+  display: none;
+
+  @include mobile {
+    position: fixed;
+    top: 35px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    span {
+      display: block;
+      height: 3px;
+      background-color: #fff; 
+      border-radius: 2px;
+      transition: 0.3s ease;
+    }
+  }
+}
+
+.sidebar {
+  display: none;
+
+  @include mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 50vh;
+    width: 100%;
+    background-color: white; 
+    color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    transform: translateX(100%); 
+    z-index: 1000;
+    text-align: center;
+    &.active {
+      transform: translateX(0); 
+    }
+
+    .close-btn {
+      font-size: 2rem;
+      cursor: pointer;
+      align-self: flex-end;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin: 20px 0;
+
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 24px;
+          text-align: center;
+          transition: color 0.3s ease;
 
           &:hover {
             color: #ccc;

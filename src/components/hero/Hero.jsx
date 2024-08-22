@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion'; 
 import './hero.scss';
 import Ashish from '../hero/ashish.png';
-import Resume from '../hero/resume.png';
+
 
 
 const textVariants = {

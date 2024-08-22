@@ -11,9 +11,10 @@
     font-size: 100px;
     z-index: 5;
     position: relative;
-    color:white; 
+    color: white; 
     font-family: cursive;
   }
+
   .title {
     align-items: center;
     text-align: center; 
@@ -21,13 +22,13 @@
     margin-bottom: 20px; 
     color: white;
     line-height: 1.6; 
-}
 
-.title h1 {
-    font-size: 24px; 
-    font-weight: 400; 
-    color: white;
-}
+    h1 {
+      font-size: 24px; 
+      font-weight: 400; 
+      color: white;
+    }
+  }
 
   .paraimg {
     background-image: url("../parallax/aboutme2.jpeg");
@@ -38,5 +39,49 @@
     position: absolute;
     z-index: 2;
     opacity: 0.6;
+  }
+
+  @media (max-width: 768px) {
+    height: 80vh; 
+
+    h1 {
+      font-size: 50px;
+    }
+
+    .title {
+      max-width: 90%;
+      margin-top: 30px; 
+
+      h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .paraimg {
+      background-image: url("../parallax/aboutme2.jpeg"); 
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 60vh; 
+
+    h1 {
+      font-size: 35px;
+    }
+
+    .title {
+      max-width: 95%;
+      margin-bottom: 5px; 
+
+      h1 {
+        font-size: 18px;
+      }
+    }
+
+    .paraimg {
+      background-image: url("../parallax/aboutme2.jpeg"); 
+    }
   }
 }
