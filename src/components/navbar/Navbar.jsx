@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './navbar.scss';
 import { motion } from "framer-motion";
-import { Link } from 'react-scroll'; // Import Link from react-scroll
+import { Link } from 'react-scroll'; 
 import Logo from "../navbar/addd.png";
 
 const Navbar = () => {
@@ -31,6 +31,7 @@ const Navbar = () => {
             <li><Link to="Projects" smooth={true} duration={500} activeClass="active">Projects</Link></li>
             <li><Link to="Contact" smooth={true} duration={500} activeClass="active">Contact</Link></li>
           </ul>
+          <hr />
         </nav>
         <div className="hamburger" onClick={toggleSidebar}>
           <span></span>

@@ -35,9 +35,11 @@ $active-color: #ccc;
           transition: color 0.3s ease;
           font-weight: bold;
           padding: 12px;
+          font-family: 'Times New Roman', Times, serif;
+          cursor: pointer;
 
           &:hover {
-            color: $active-color;
+            color: orange;
           }
 
           &.active {
@@ -50,7 +52,7 @@ $active-color: #ccc;
 
     hr {
       margin: 5px;
-      height: 4px;
+      height: 2px;
       background-color: white;
     }
   }

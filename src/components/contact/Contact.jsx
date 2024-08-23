@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     
     <div className="contact-section">
-      <h2 className="contact-title">Contact</h2>
+      <h2 className="contact-title">Contact Me</h2>
       <div className="contact-container">
         <div className="contact-details">
           <div className="contact-info">
