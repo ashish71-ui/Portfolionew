@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const variants = {
   initial: {
-    x: 100,
-    y: 100,
+    // x: 100,
+    // y: 100,
     opacity: 0,
   },
   animate: {
@@ -31,7 +31,7 @@ const Services = () => {
         <hr />
       </motion.div>
       <motion.div className="titleContainer" variants={variants}>
-        <motion.button>Education and Experience</motion.button>
+        <motion.button>Education</motion.button>
       </motion.div>
 
       <motion.div className="listContainer" variants={variants}>
