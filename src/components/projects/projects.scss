@@ -2,44 +2,66 @@
     padding: 20px;
 
     .navbar-space {
-        height: 50px; 
+        height: 100px; 
         width: 100%;
     }
 
     .myproject {
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     h1 {
-        font-size: 80px;
-        color:white;
+        font-size: 60px;
+        color: white;
         font-family: 'Times New Roman', Times, serif;
     }
 
     .project-list {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
+        gap: 20px;
     }
 
     .project-card {
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 0.5px solid gray;
-        border-radius: 20px;
+        border: 1px solid gray;
+        border-radius: 10px;
         padding: 20px;
-        margin: 5px;
-        width: 40%; 
+        width: 50%; 
         height: 450px;
+        background-color: #060624;
+        color: white;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-card img {
+        width: 500px;
+        height: 200px; 
+        object-fit: cover; 
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+
+    .project-card h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: orange;
     }
 
     .project-card p {
         text-align: center;
         font-size: 1rem;
         flex-grow: 1; 
-        margin: 5px 0;
+        margin: 10px 0;
         overflow: hidden;
     }
 
@@ -51,30 +73,22 @@
     }
 
     .project-buttons button {
-        padding: 20px;
+        padding: 10px 20px;
         border: 1px solid white;
         border-radius: 10px;
         background-color: transparent;
         color: white;
         margin-right: 20px;
         cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        width: 200px;
+        height: 50px;
     }
 
     .project-buttons button:hover {
-        background-color:white;
+        background-color: white;
         color: black;
-    }
-
-    .project-card img {
-        width: 60%;
-        height: 200px; 
-        object-fit: cover; 
-        margin-bottom: 15px;
-    }
-
-    .project-card h2 {
-        font-size: 30px;
-        color: orange;
+       
     }
 
     .pagination {
@@ -83,15 +97,15 @@
     }
 
     .pagination button {
-        padding: 5px 5px;
+        padding: 10px 20px;
         margin: 0 10px;
         cursor: pointer;
         border: none;
         border-radius: 5px;
-        background-color:white;
+        background-color: white;
         font-size: 1rem;
         transition: background-color 0.3s;
-        width: 200px;
+        width: 150px;
     }
 
     .prev-button {
@@ -116,61 +130,59 @@
         }
 
         .project-list {
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
         .project-card {
-            width: 48%; 
-            height: 460px; 
-            padding: 10px;
+            width: 100%; 
+            height: auto;
+            padding: 15px;
             margin: 10px 0;
         }
 
         .project-card img {
-            width: 50%;
-            height: 100px; 
+            width: 100%;
+            height: 150px; 
             margin-bottom: 10px;
         }
 
         .project-card h2 {
-            font-size: 16px;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        .project-card p{
-            font-size: 0.8rem;
+        .project-card p {
+            font-size: 0.9rem;
+            margin: 10px 0;
+            flex-grow: 1;
             height: auto; 
-            flex-grow: 1; 
-            
-            overflow: hidden;
-            
-            
         }
 
-        .project-buttons{
-            padding: 10px;
-            justify-content: space-between;
-            margin-top: 0;
-            margin-bottom: 50px;
+        .project-buttons {
+            margin-top: 10px;
+            width: 100%;
+            justify-content: space-evenly;
         }
 
         .project-buttons button {
-            padding: 10px;
-            margin-right: 0;
+            padding: 8px 12px;
             font-size: 0.8rem;
+            margin-right: 0;
+            width: 150px;
         }
 
         .pagination {
-            margin-top: 0;
+            margin-top: 15px;
             display: flex;
-            flex-direction: row;
             justify-content: center;
+            gap: 10px;
         }
 
         .pagination button {
-            height: 30px;
-            width: 100px;
+            height: 40px;
+            width: 120px;
             font-size: 0.8rem;
             padding: 5px;
         }

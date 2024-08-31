@@ -1,9 +1,10 @@
 import React from "react";
 import "./services.scss";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
+
 const variants = {
   initial: {
-    x: -500,
+    x: 100,
     y: 100,
     opacity: 0,
   },
@@ -27,12 +28,11 @@ const Services = () => {
       whileInView="animate"
     >
       <motion.div className="textContainer" variants={variants}>
-        
         <hr />
       </motion.div>
       <motion.div className="titleContainer" variants={variants}>
-       
-        <motion.button>Education and Experience</motion.button> </motion.div>
+        <motion.button>Education and Experience</motion.button>
+      </motion.div>
 
       <motion.div className="listContainer" variants={variants}>
         <motion.div className="box">

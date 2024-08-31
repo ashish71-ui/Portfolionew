@@ -62,7 +62,7 @@ const ProjectCard = ({ item }) => {
       className="project-card"
       initial={{ x: -200, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.5 }}
       whileInView="animate"
     >
       <img src={item.img} alt={item.title} />
@@ -82,7 +82,7 @@ const ProjectCard = ({ item }) => {
 
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 2;
+  const projectsPerPage = 1;
 
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
