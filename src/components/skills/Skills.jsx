@@ -12,7 +12,6 @@ import {
 import { SiDjango } from "react-icons/si";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-
 const variants = {
   initial: { opacity: 0, y: 0 },
   animate: {
@@ -45,7 +44,7 @@ const Skills = () => {
   });
 
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]); // Adjusted the range
 
   return (
     <div ref={ref} className="parallax">
