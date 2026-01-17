@@ -1,97 +1,106 @@
-.skills-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    max-width: 1066px;
-  
-    .skill-card {
-      width: 120px;
-      height: 120px;
-      backdrop-filter: blur(20px);
-      background: rgb(35, 34, 34);
-      border-radius: 50%;
-      box-shadow: 0 8px 32px rgba(24, 32, 147, 0.37);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border: 2px solid rgba(245, 228, 228, 0.18);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-top: 20px;
-  
-      &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 50px rgba(99, 104, 169, 0.37);
-        cursor: pointer;
-      }
-  
-      .icon {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        color: #fff;
-      }
-  
-      .name {
-        font-size: 1rem;
-        color: #fff;
-        font-weight: 600;
-      }
-    }
-  }
-  
-  .parallax {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-color: #0c0c1d;
-  }
-  
-  .tools {
-    margin-top: 20px;
-  
+$accent: #64ffda;
+$bg: #020408;
+$mono: 'Fira Code', 'JetBrains Mono', monospace;
+
+.skill-processor {
+  min-height: 100vh;
+  background: $bg;
+  padding: 80px 40px;
+  font-family: $mono;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 80px;
     h2 {
-      font-size: 80px;
-      color: white;
-      font-family: 'Times New Roman', Times, serif;
-      text-align: center;
+      font-size: 3.5rem;
+      letter-spacing: 8px;
+      margin: 0;
+      position: relative;
+      color: #fff;
+      &::after {
+        content: attr(data-text);
+        position: absolute; left: 2px; text-shadow: -1px 0 $accent;
+        top: 0; color: #fff; background: $bg; overflow: hidden;
+        animation: glitch 3s infinite linear alternate-reverse;
+      }
+    }
+    .subtitle { font-size: 12px; color: $accent; margin-top: 10px; opacity: 0.6; }
+  }
+
+  .processor-wrapper {
+    display: grid;
+    grid-template-columns: 280px 1.2fr 400px;
+    gap: 60px;
+    width: 100%;
+    max-width: 1400px;
+    align-items: center;
+
+    @media (max-width: 1200px) { grid-template-columns: 1fr; gap: 60px; }
+  }
+
+  .system-label {
+    font-size: 10px; letter-spacing: 3px; color: #444; margin-bottom: 30px;
+    span { color: $accent; }
+  }
+
+  // Left Input Styles
+  .input-section {
+    .skill-list {
+      display: flex; flex-direction: column; gap: 20px;
+      .skill-node {
+        display: flex; align-items: center; gap: 20px;
+        transition: 0.5s ease;
+        &.standby { opacity: 0.4; filter: grayscale(1); }
+        &.active { opacity: 1; filter: grayscale(0); }
+
+        .node-info {
+          display: flex; align-items: center; gap: 15px; width: 140px;
+          .icon-box { font-size: 1.6rem; transition: color 0.5s; }
+          .skill-label { font-size: 13px; font-weight: 500; }
+        }
+
+        .stream-path {
+          flex: 1; height: 1px; background: rgba(255,255,255,0.05); position: relative;
+          .data-chunk { position: absolute; height: 3px; width: 15px; top: -1px; border-radius: 2px; }
+        }
+      }
     }
   }
-  
-  @media (max-width: 768px) {
-    .skills-section {
-      padding: 10px;
-      gap: 10px; 
+
+  // Center Brain/Terminal Styles
+  .brain-section {
+    display: flex; flex-direction: column; align-items: center;
+    .brain-container {
+      position: relative; width: 180px; height: 180px; margin-bottom: 50px;
+      .brain-shell { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 5rem; z-index: 5; }
+      .core-glow { position: absolute; inset: 0; border-radius: 50%; filter: blur(60px); opacity: 0.15; transition: background 0.8s ease; }
     }
-  
-    .skill-card {
-      width: 80px; 
-      height: 80px; 
-      margin-top: 15px; 
-  
-      .icon {
-        margin-bottom: 5px; 
-      }
-  
-      .name {
-        font-size: 0.75rem; 
-      }
-    }
-  
-    .tools {
-      margin-top: 10px;
-  
-      h2 {
-        font-size: 40px; 
-      }
+    .mini-terminal {
+      width: 100%; max-width: 450px; background: #010409; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      .term-header { background: #0d1117; padding: 10px 15px; display: flex; align-items: center; gap: 12px; font-size: 10px; color: #555; .term-dots { display: flex; gap: 5px; span { width: 6px; height: 6px; border-radius: 50%; background: #222; } } }
+      .term-body { padding: 18px; font-size: 13px; min-height: 100px; .prompt { color: $accent; margin-right: 10px; } .term-success { color: #98c379; margin-top: 8px; } .cursor { animation: blink 1s infinite; color: $accent; } }
     }
   }
-  
+
+  // Right Editor Styles
+  .editor-window {
+    background: #010409; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    .editor-tab { padding: 12px 20px; font-size: 11px; color: #666; background: #0d1117; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .editor-body { padding: 25px; display: flex; gap: 20px; .line-numbers { display: flex; flex-direction: column; color: #222; font-size: 13px; text-align: right; } .code-content { font-size: 14px; color: #e6edf3; line-height: 1.7; white-space: pre; margin: 0; code { font-family: $mono; } .typing-cursor { display: inline-block; width: 6px; height: 15px; margin-left: 5px; animation: blink 1s infinite; } } }
+  }
+}
+
+@keyframes glitch { 0% { clip: rect(44px, 9999px, 56px, 0); } 20% { clip: rect(12px, 9999px, 99px, 0); } 40% { clip: rect(76px, 9999px, 12px, 0); } 60% { clip: rect(23px, 9999px, 88px, 0); } 80% { clip: rect(98px, 9999px, 45px, 0); } 100% { clip: rect(10px, 9999px, 85px, 0); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+@media (max-width: 1200px) {
+  .skill-processor {
+    padding: 60px 20px;
+    .input-section { width: 100%; .skill-list { flex-direction: row; flex-wrap: wrap; justify-content: center; .stream-path { display: none; } .skill-node .node-info { width: auto; } } }
+    .processor-wrapper { gap: 40px; }
+  }
+}

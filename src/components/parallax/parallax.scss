@@ -1,87 +1,89 @@
+$accent: #64ffda;
+$bg-dark: #0a192f;
+$font-mono: 'Fira Code', 'JetBrains Mono', monospace;
+
 .parallax {
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
+  overflow: hidden;
+  background: $bg-dark;
 
-  h1 {
-    font-size: 80px;
-    z-index: 5;
-    position: relative;
-    color: white; 
-    font-family: 'Times New Roman', Times, serif;
-  }
-
-  .title {
-    align-items: center;
-    text-align: center; 
-    max-width: 966px; 
-    margin-bottom: 20px; 
-    color: white;
-    line-height: 1.6; 
-
-    h1 {
-      font-size: 24px; 
-      font-weight: 400; 
-      color: white;
-    }
-  }
-
-  .paraimg {
-    background-image: url("../parallax/aboutme2.jpeg");
-    background-size: cover; 
-    background-position: center; 
-    width: 100%;
-    height: 100%;
+  .parallax-overlay {
     position: absolute;
-    z-index: 2;
-    opacity: 0.6;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, $bg-dark 90%);
+    z-index: 3;
   }
 
-  @media (max-width: 768px) {
-    height: 80vh; 
+  .content-wrapper {
+    z-index: 5;
+    text-align: center;
+    padding: 0 20px;
+
+    .section-label {
+      font-family: $font-mono;
+      color: $accent;
+      font-size: 14px;
+      letter-spacing: 4px;
+      display: block;
+      margin-bottom: 10px;
+    }
 
     h1 {
-      font-size: 50px;
+      font-size: clamp(40px, 8vw, 100px);
+      font-weight: 800;
+      color: #e6f1ff;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
     }
 
     .title {
-      max-width: 90%;
-      margin-top: 30px; 
-
-      h1 {
-        font-size: 20px;
-        margin-bottom: 20px;
-      }
-    }
-
-    .paraimg {
-      background-image: url("../parallax/aboutme2.jpeg"); 
-      height: 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    height: 60vh; 
-
-    h1 {
-      font-size: 35px;
-    }
-
-    .title {
-      max-width: 95%;
-      margin-bottom: 5px; 
-
-      h1 {
+      max-width: 700px;
+      margin: 20px auto;
+      
+      p {
+        font-family: $font-mono;
         font-size: 18px;
+        color: #8892b0;
+        line-height: 1.6;
       }
     }
+  }
 
-    .paraimg {
-      background-image: url("../parallax/aboutme2.jpeg"); 
-    }
+  // Visual Tech Elements
+  .parallax-stars {
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); // Subtle tech pattern
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    top: 0;
+    z-index: 1;
+    opacity: 0.2;
+  }
+
+  .parallax-planets {
+    // Creating a digital grid instead of a photo
+    background-image: linear-gradient($accent 1px, transparent 1px),
+                      linear-gradient(90deg, $accent 1px, transparent 1px);
+    background-size: 100px 100px;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    z-index: 2;
+    opacity: 0.05;
+    transform: rotateX(60deg);
+    top: -50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .parallax .content-wrapper {
+    h1 { font-size: 45px; }
+    .title p { font-size: 14px; }
   }
 }

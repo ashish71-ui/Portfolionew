@@ -5,6 +5,8 @@ import Services from "./components/services/Services";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/contact/Contact";
+import DataSection from "./components/datasection/DataSection";
+
 import "./app.scss";
 
 function App() {
@@ -14,8 +16,9 @@ function App() {
         <Navbar />
         <Hero />
       </section>
-      <section id="Aboutme">
-        <Parallax type="aboutme" />
+
+      <section id="DataSection">
+        <DataSection />
       </section>
       <section id="About">
         <Services />

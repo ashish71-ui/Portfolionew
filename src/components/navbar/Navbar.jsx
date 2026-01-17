@@ -1,57 +1,80 @@
 import React, { useState } from 'react';
-import './navbar.scss';
-import { motion } from "framer-motion";
-import { Link } from 'react-scroll'; 
-import Logo from "../navbar/addd.png";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from 'react-scroll';
+import "./navbar.scss";
+
+const navLinks = [
+  { name: "Home", to: "HomePage" },
+  { name: "About", to: "Aboutme" },
+  { name: "Skills", to: "Skills" },
+  { name: "Projects", to: "Projects" },
+  { name: "Contact", to: "Contact" },
+];
 
 const Navbar = () => {
-  const [sidebar, setSidebar] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebar(!sidebar);
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
-      <header className="navbar">
-        <div className="logo">
-          <motion.span
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1.5 }}
-            transition={{ duration: 1 }}
-          >
-            <img src={Logo} alt="Logo" />
-          </motion.span>
-        </div>
-        <nav className="nav-links">
-          <ul>
-            <li><Link to="HomePage" smooth={true} duration={500} activeClass="active">Home</Link></li>
-            <li><Link to="Aboutme" smooth={true} duration={500} activeClass="active">About</Link></li>
-            <li><Link to="Skills" smooth={true} duration={500} activeClass="active">Skills</Link></li>
-            <li><Link to="Projects" smooth={true} duration={500} activeClass="active">Projects</Link></li>
-            <li><Link to="Contact" smooth={true} duration={500} activeClass="active">Contact</Link></li>
-          </ul>
-          <hr />
-        </nav>
-        <div className="hamburger" onClick={toggleSidebar}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </header>
+    <nav className="nav-container">
+      <div className="nav-wrapper">
+        {/* Logo - Tech Aesthetic */}
+        <motion.div 
+          className="nav-logo"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span className="logo-bracket">{"<"}</span>
+          Ashish
+          <span className="logo-bracket">{"/>"}</span>
+        </motion.div>
 
-      <div className={`sidebar ${sidebar ? 'active' : ''}`}>
-        <span className="close-btn" onClick={toggleSidebar}>&times;</span>
-        <ul>
-          <li><Link to="HomePage" smooth={true} duration={500} onClick={toggleSidebar}>Home</Link></li>
-          <li><Link to="Aboutme" smooth={true} duration={500} onClick={toggleSidebar}>About</Link></li>
-          <li><Link to="Skills" smooth={true} duration={500} onClick={toggleSidebar}>Skills</Link></li>
-          <li><Link to="Projects" smooth={true} duration={500} onClick={toggleSidebar}>Projects</Link></li>
-          <li><Link to="Contact" smooth={true} duration={500} onClick={toggleSidebar}>Contact</Link></li>
+        {/* Desktop Links */}
+        <ul className="desktop-links">
+          {navLinks.map((link) => (
+            <li key={link.name}>
+              <Link to={link.to} smooth spy activeClass="active-link">
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
+
+        {/* Hamburger - Animated */}
+        <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
       </div>
-    </div>
+
+      {/* Mobile Sidebar - Framer Motion */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="mobile-sidebar"
+          >
+            <ul className="mobile-list">
+              {navLinks.map((link, i) => (
+                <motion.li 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  key={link.name}
+                >
+                  <Link to={link.to} smooth onClick={() => setIsOpen(false)}>
+                    {link.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
-}
+};
 
 export default Navbar;

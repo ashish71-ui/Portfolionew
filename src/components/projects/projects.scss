@@ -1,190 +1,122 @@
-.projects {
-    padding: 20px;
+$ide-bg: #0d1117;
+$ide-sidebar: #010409;
+$ide-header: #161b22;
+$ide-border: #30363d;
+$accent: #64ffda;
+$keyword: #ff7b72;
+$variable: #79c0ff;
+$property: #d2a8ff;
+$string: #a5d6ff;
 
-    .navbar-space {
-        height: 100px; 
-        width: 100%;
+.projects-section {
+  background-color: #03060a;
+  min-height: 100vh;
+  padding: 80px 20px;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+
+  .ide-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: $ide-bg;
+    border: 1px solid $ide-border;
+    border-radius: 8px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+
+  .ide-top {
+    height: 40px;
+    background: $ide-header;
+    border-bottom: 1px solid $ide-border;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    justify-content: space-between;
+
+    .window-controls {
+      display: flex; gap: 8px;
+      .dot { width: 10px; height: 10px; border-radius: 50%; }
+      .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
     }
 
-    .myproject {
-        text-align: center;
-        margin-bottom: 20px;
+    .ide-search {
+      background: #0d1117;
+      border: 1px solid $ide-border;
+      padding: 2px 60px;
+      border-radius: 5px;
+      font-size: 11px;
+      color: #8b949e;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ide-actions { color: #8b949e; }
+  }
+
+  .ide-main {
+    display: flex;
+    height: 550px;
+
+    .ide-sidebar {
+      width: 220px;
+      background: $ide-sidebar;
+      border-right: 1px solid $ide-border;
+      padding: 15px 0;
+      .label { font-size: 11px; color: #8b949e; padding: 0 20px 10px; font-weight: bold; }
+      .folder { display: flex; align-items: center; gap: 8px; padding: 5px 20px; font-size: 12px; color: #c9d1d9; }
+      .file-list {
+        .file-item {
+          display: flex; align-items: center; gap: 10px; padding: 6px 35px;
+          font-size: 13px; color: #8b949e; cursor: pointer;
+          &.active { background: rgba($accent, 0.1); color: $accent; border-left: 2px solid $accent; }
+        }
+      }
     }
 
-    h1 {
-        font-size: 60px;
-        color: white;
-        font-family: 'Times New Roman', Times, serif;
-    }
+    .ide-editor {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
 
-    .project-list {
+      .tabs {
+        background: $ide-header;
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .project-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid gray;
-        border-radius: 10px;
-        padding: 20px;
-        width: 50%; 
-        height: 450px;
-        background-color: #060624;
-        color: white;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .project-card img {
-        width: 500px;
-        height: 200px; 
-        object-fit: cover; 
-        margin-bottom: 15px;
-        border-radius: 10px;
-    }
-
-    .project-card h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-        color: orange;
-    }
-
-    .project-card p {
-        text-align: center;
-        font-size: 1rem;
-        flex-grow: 1; 
-        margin: 10px 0;
-        overflow: hidden;
-    }
-
-    .project-buttons {
-        display: flex;
-        justify-content: center;
-        margin-top: 15px;
-        width: 100%;
-    }
-
-    .project-buttons button {
-        padding: 10px 20px;
-        border: 1px solid white;
-        border-radius: 10px;
-        background-color: transparent;
-        color: white;
-        margin-right: 20px;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-        width: 200px;
-        height: 50px;
-    }
-
-    .project-buttons button:hover {
-        background-color: white;
-        color: black;
-       
-    }
-
-    .pagination {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .pagination button {
-        padding: 10px 20px;
-        margin: 0 10px;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        background-color: white;
-        font-size: 1rem;
-        transition: background-color 0.3s;
-        width: 150px;
-    }
-
-    .prev-button {
-        background-color: #f0ad4e;
-    }
-
-    .next-button {
-        background-color: #5bc0de;
-    }
-
-    .prev-button:hover {
-        background-color: #ec971f;
-    }
-
-    .next-button:hover {
-        background-color: #31b0d5;
-    }
-
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 40px;
+        .tab {
+          background: $ide-bg; padding: 8px 20px; font-size: 12px; color: $accent;
+          display: flex; align-items: center; gap: 10px; border-right: 1px solid $ide-border;
         }
+      }
 
-        .project-list {
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
+      .editor-view {
+        flex: 1; padding: 30px; overflow-y: auto;
 
-        .project-card {
-            width: 100%; 
-            height: auto;
-            padding: 15px;
-            margin: 10px 0;
-        }
+        .project-split {
+          display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
 
-        .project-card img {
-            width: 100%;
-            height: 150px; 
-            margin-bottom: 10px;
-        }
+          pre { font-size: 13px; line-height: 1.6; .keyword { color: $keyword; } .variable { color: $variable; } .property { color: $property; } .string { color: $string; } }
 
-        .project-card h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+          .project-links {
+            margin-top: 30px; display: flex; gap: 12px;
+            .btn-ide {
+              text-decoration: none; padding: 8px 15px; border: 1px solid $ide-border;
+              font-size: 12px; color: #c9d1d9; border-radius: 4px; display: flex; align-items: center; gap: 8px;
+              transition: 0.2s;
+              &:hover { background: #21262d; }
+              &.primary { background: $accent; color: #000; border: none; }
+            }
+          }
 
-        .project-card p {
-            font-size: 0.9rem;
-            margin: 10px 0;
-            flex-grow: 1;
-            height: auto; 
+          .visual-content {
+            .terminal-label { font-size: 11px; color: #8b949e; margin-bottom: 10px; }
+            .preview-window {
+              border: 1px solid $ide-border; border-radius: 4px; overflow: hidden; height: 250px;
+              img { width: 100%; height: 100%; object-fit: cover; }
+            }
+          }
         }
-
-        .project-buttons {
-            margin-top: 10px;
-            width: 100%;
-            justify-content: space-evenly;
-        }
-
-        .project-buttons button {
-            padding: 8px 12px;
-            font-size: 0.8rem;
-            margin-right: 0;
-            width: 150px;
-        }
-
-        .pagination {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .pagination button {
-            height: 40px;
-            width: 120px;
-            font-size: 0.8rem;
-            padding: 5px;
-        }
+      }
     }
+  }
+}
+
+@media (max-width: 850px) {
+  .projects-section .ide-main { flex-direction: column; height: auto; .ide-sidebar { display: none; } .project-split { grid-template-columns: 1fr; } }
 }

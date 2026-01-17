@@ -1,140 +1,96 @@
-$primary-color: #fff;
-$active-color: #ccc; 
+$accent: #64ffda; // Cyber Green
+$bg-dark: rgba(10, 10, 10, 0.8);
+$font-mono: 'Fira Code', 'JetBrains Mono', monospace;
 
-.navbar {
-  max-width: 1366px;
-  margin-left: 20px;
+.nav-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
-  position: relative;
+  justify-content: center;
 
-  .logo {
-    margin-top: 90px;
+  .nav-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .nav-links {
-    position: fixed;
-    top: 30px; 
-    left: 840px;
-    z-index: 100;
+  .nav-logo {
+    font-family: $font-mono;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    .logo-bracket { color: $accent; }
+  }
 
-    ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
+  .desktop-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
 
-      li {
-        margin-left: 1rem;
+    @media (max-width: 768px) { display: none; }
 
-        a {
-          text-decoration: none;
-          color: $primary-color;
-          font-size: 28px;
-          transition: color 0.3s ease;
-          font-weight: bold;
-          padding: 12px;
-          font-family: 'Times New Roman', Times, serif;
-          cursor: pointer;
+    a {
+      font-family: $font-mono;
+      font-size: 0.9rem;
+      color: #ccd6f6;
+      cursor: pointer;
+      transition: 0.3s;
 
-          &:hover {
-            color: orange;
-          }
-
-          &.active {
-            color: $active-color;
-            background-color: black; 
-          }
-        }
+      &:hover, &.active-link {
+        color: $accent;
       }
     }
-
-    hr {
-      margin: 5px;
-      height: 2px;
-      background-color: white;
-    }
-  }
-}
-
-@mixin mobile {
-  @media (max-width: 768px) {
-    @content;
   }
 }
 
 .hamburger {
   display: none;
+  cursor: pointer;
+  z-index: 1001;
+  @media (max-width: 768px) { display: block; }
 
-  @include mobile {
-    position: fixed;
-    top: 35px;
-    right: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 1000;
-    span {
-      display: block;
-      height: 3px;
-      background-color: #fff; 
-      border-radius: 2px;
-      transition: 0.3s ease;
-    }
+  .line {
+    width: 25px;
+    height: 2px;
+    background: $accent;
+    margin: 5px;
+    transition: 0.3s;
+  }
+
+  &.open {
+    .line:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .line:nth-child(2) { transform: rotate(-45deg) translate(5px, -5px); }
   }
 }
 
-.sidebar {
-  display: none;
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  background: #112240;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @include mobile {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 50vh;
-    width: 100%;
-    background-color: white; 
-    color: black;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    transition: transform 0.3s ease;
-    transform: translateX(100%); 
-    z-index: 1000;
+  .mobile-list {
+    list-style: none;
     text-align: center;
-    &.active {
-      transform: translateX(0); 
-    }
-
-    .close-btn {
-      font-size: 2rem;
-      cursor: pointer;
-      align-self: flex-end;
-      margin-bottom: 20px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-
-      li {
-        margin: 20px 0;
-
-        a {
-          text-decoration: none;
-          color: black;
-          font-size: 24px;
-          text-align: center;
-          transition: color 0.3s ease;
-
-          &:hover {
-            color: #ccc;
-          }
-        }
+    li {
+      margin: 2rem 0;
+      a {
+        font-family: $font-mono;
+        font-size: 1.5rem;
+        color: #fff;
       }
     }
   }
