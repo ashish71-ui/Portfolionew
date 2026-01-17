@@ -6,18 +6,20 @@ import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/contact/Contact";
 import DataSection from "./components/datasection/DataSection";
+import HobbyBlog from "./components/HobbyBlog/HobbyBlog";
+import { ThemeProvider } from "./context/ThemeContext";
 
 import "./app.scss";
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <section id="HomePage">
         <Navbar />
         <Hero />
       </section>
 
-      <section id="DataSection">
+      <section id="about">
         <DataSection />
       </section>
       <section id="About">
@@ -32,7 +34,10 @@ function App() {
       <section id="Contact">
         <Contact />
       </section>
-    </>
+      <section id="Hobby">
+        <HobbyBlog />
+      </section>
+    </ThemeProvider>
   );
 }
 

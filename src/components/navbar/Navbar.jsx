@@ -1,32 +1,38 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from 'react-scroll';
+import { useTheme } from '../../context/ThemeContext';
+import { Sun, Moon } from 'lucide-react';
 import "./navbar.scss";
 
 const navLinks = [
   { name: "Home", to: "HomePage" },
-  { name: "About", to: "Aboutme" },
+  { name: "About", to: "About" },
   { name: "Skills", to: "Skills" },
   { name: "Projects", to: "Projects" },
   { name: "Contact", to: "Contact" },
+  { name: "Blog", to: "Hobby" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="nav-container">
       <div className="nav-wrapper">
         {/* Logo - Tech Aesthetic */}
-        <motion.div 
-          className="nav-logo"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className="logo-bracket">{"<"}</span>
-          Ashish
-          <span className="logo-bracket">{"/>"}</span>
-        </motion.div>
+        <Link to="HomePage" smooth spy>
+          <motion.div 
+            className="nav-logo"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="logo-bracket">{"<"}</span>
+            Ashish
+            <span className="logo-bracket">{"/>"}</span>
+          </motion.div>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="desktop-links">
@@ -38,6 +44,17 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
+        {/* Theme Toggle */}
+        <motion.button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Toggle theme"
+        >
+          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+        </motion.button>
 
         {/* Hamburger - Animated */}
         <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
@@ -69,6 +86,16 @@ const Navbar = () => {
                   </Link>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+              >
+                <button className="mobile-theme-toggle" onClick={() => { toggleTheme(); setIsOpen(false); }}>
+                  {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+                  <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+                </button>
+              </motion.li>
             </ul>
           </motion.div>
         )}

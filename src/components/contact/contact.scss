@@ -1,12 +1,8 @@
-$accent: #64ffda;
-$bg-dark: #020c1b;
-$card-bg: #0a192f;
-$text-slate: #8892b0;
 $font-mono: 'JetBrains Mono', monospace;
 
 .contact-section {
   min-height: 100vh;
-  background-color: $bg-dark;
+  background-color: var(--bg-section-6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,17 +10,19 @@ $font-mono: 'JetBrains Mono', monospace;
   overflow: hidden;
   font-family: $font-mono;
   padding: 40px 20px;
+  transition: background-color 0.5s ease;
 
   .contact-bg-text {
     position: absolute;
     font-size: 15vw;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.02);
+    color: var(--border-color);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
+    transition: color 0.3s ease;
   }
 
   .contact-wrapper {
@@ -33,36 +31,41 @@ $font-mono: 'JetBrains Mono', monospace;
     grid-template-columns: 1fr 1fr;
     max-width: 1100px;
     width: 100%;
-    background: $card-bg;
-    border: 1px solid rgba($accent, 0.1);
+    background: var(--bg-card);
+    border: 1px solid var(--border-accent);
     border-radius: 4px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 50px var(--shadow-color);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
     .contact-details {
       padding: 40px;
-      border-right: 1px solid rgba($accent, 0.1);
+      border-right: 1px solid var(--border-accent);
+      transition: border-color 0.3s ease;
 
       .terminal-header {
         display: flex;
         align-items: center;
         gap: 10px;
-        color: $accent;
+        color: var(--accent-color);
         font-size: 12px;
         margin-bottom: 30px;
+        transition: color 0.3s ease;
       }
 
       .glitch-text {
         font-size: 2.5rem;
-        color: #fff;
+        color: var(--text-primary);
         margin-bottom: 15px;
         letter-spacing: -1px;
+        transition: color 0.3s ease;
       }
 
       .summary {
-        color: $text-slate;
+        color: var(--text-tertiary);
         font-size: 0.9rem;
         line-height: 1.6;
         margin-bottom: 40px;
+        transition: color 0.3s ease;
       }
 
       .info-list {
@@ -79,16 +82,27 @@ $font-mono: 'JetBrains Mono', monospace;
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            border: 1px solid rgba($accent, 0.3);
+            border: 1px solid var(--border-accent);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: $accent;
+            color: var(--accent-color);
+            transition: border-color 0.3s ease, color 0.3s ease;
           }
 
           .text {
-            label { display: block; font-size: 10px; color: $accent; opacity: 0.7; }
-            span { color: #ccd6f6; font-size: 0.9rem; }
+            label { 
+              display: block; 
+              font-size: 10px; 
+              color: var(--accent-color); 
+              opacity: 0.7;
+              transition: color 0.3s ease;
+            }
+            span { 
+              color: var(--text-secondary); 
+              font-size: 0.9rem;
+              transition: color 0.3s ease;
+            }
           }
         }
       }
@@ -98,27 +112,36 @@ $font-mono: 'JetBrains Mono', monospace;
         display: flex;
         gap: 20px;
         a {
-          color: $text-slate;
-          transition: 0.3s;
-          &:hover { color: $accent; transform: translateY(-3px); }
+          color: var(--text-tertiary);
+          transition: all 0.3s ease;
+          &:hover { 
+            color: var(--accent-color); 
+            transform: translateY(-3px); 
+          }
         }
       }
     }
 
     .contact-form-container {
       padding: 40px;
-      background: rgba(2, 12, 27, 0.5);
+      background: var(--bg-card-light);
+      transition: background 0.3s ease;
 
       .form-header {
         display: flex;
         align-items: center;
         gap: 10px;
         font-size: 12px;
-        color: $text-slate;
+        color: var(--text-tertiary);
         margin-bottom: 40px;
+        transition: color 0.3s ease;
         .status-dot {
-          width: 8px; height: 8px; background: $accent; border-radius: 50%;
+          width: 8px; 
+          height: 8px; 
+          background: var(--accent-color); 
+          border-radius: 50%;
           animation: pulse 2s infinite;
+          transition: background 0.3s ease;
         }
       }
 
@@ -133,12 +156,16 @@ $font-mono: 'JetBrains Mono', monospace;
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba($accent, 0.2);
+            border-bottom: 1px solid var(--border-accent);
             padding: 10px 0;
-            color: #fff;
+            color: var(--text-primary);
             font-family: $font-mono;
             font-size: 0.9rem;
-            &::placeholder { color: rgba(255, 255, 255, 0.2); }
+            transition: color 0.3s ease, border-color 0.3s ease;
+            &::placeholder { 
+              color: var(--text-tertiary);
+              opacity: 0.5;
+            }
             &:focus {
               outline: none;
               & ~ .input-focus-line { width: 100%; }
@@ -150,27 +177,27 @@ $font-mono: 'JetBrains Mono', monospace;
             left: 0;
             width: 0%;
             height: 1px;
-            background: $accent;
-            transition: 0.4s ease;
+            background: var(--accent-color);
+            transition: width 0.4s ease, background 0.3s ease;
           }
         }
 
         .submit-btn {
           margin-top: 20px;
           background: transparent;
-          border: 1px solid $accent;
-          color: $accent;
+          border: 1px solid var(--accent-color);
+          color: var(--accent-color);
           padding: 15px;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 15px;
           cursor: pointer;
-          transition: 0.3s;
+          transition: all 0.3s ease;
           font-family: $font-mono;
           &:hover {
-            background: rgba($accent, 0.1);
-            box-shadow: 0 0 20px rgba($accent, 0.2);
+            background: var(--border-accent);
+            box-shadow: 0 0 20px var(--border-accent);
           }
         }
       }
@@ -185,8 +212,10 @@ $font-mono: 'JetBrains Mono', monospace;
     display: flex;
     justify-content: space-between;
     font-size: 10px;
-    color: rgba($text-slate, 0.4);
+    color: var(--text-tertiary);
+    opacity: 0.4;
     letter-spacing: 1px;
+    transition: color 0.3s ease;
   }
 }
 
@@ -199,6 +228,9 @@ $font-mono: 'JetBrains Mono', monospace;
 @media (max-width: 850px) {
   .contact-section .contact-wrapper {
     grid-template-columns: 1fr;
-    .contact-details { border-right: none; border-bottom: 1px solid rgba($accent, 0.1); }
+    .contact-details { 
+      border-right: none; 
+      border-bottom: 1px solid var(--border-accent); 
+    }
   }
 }

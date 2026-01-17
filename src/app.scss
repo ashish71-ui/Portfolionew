@@ -1,43 +1,120 @@
 html{
-   
     scroll-behavior: smooth;
-
 }
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-body{
-    background-color: #0c0c1d;
-    color: lightgray;
+
+// CSS Variables for Dark Theme (Default)
+:root,
+body.dark {
+    --accent-color: #64ffda;
+    // Smooth flowing background colors for sections - gradual progression
+    --bg-primary: #0c0c1d;           // Body/main background
+    --bg-section-1: #0a192f;         // Hero/HomePage - Deep navy start
+    --bg-section-2: #0c1d33;        // DataSection - Gradual transition
+    --bg-section-3: #0f2338;         // About/Services - Medium transition
+    --bg-section-4: #112640;        // Skills - Lighter transition
+    --bg-section-5: #0d1f2e;        // Projects - Slightly darker
+    --bg-section-6: #0c0c1d;        // Contact - Back to primary
+    --bg-section-7: #0a1625;        // HobbyBlog - Darker navy
+    // Card and component backgrounds - harmonized with sections
+    --bg-card: rgba(17, 38, 64, 0.6);
+    --bg-card-light: rgba(17, 38, 64, 0.4);
+    --bg-navbar: rgba(10, 25, 47, 0.85);
+    --bg-ide: #0d1117;
+    --bg-ide-sidebar: #010409;
+    --bg-ide-header: #161b22;
+    // Text colors - consistent across all sections
+    --text-primary: #e6f1ff;
+    --text-secondary: #ccd6f6;
+    --text-tertiary: #8892b0;
+    --text-dim: #a8b2d1;
+    // Borders and effects
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-accent: rgba(100, 255, 218, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.5);
 }
+
+// CSS Variables for Light Theme
+body.light {
+    --accent-color: #00d9a5;
+    // Smooth flowing background colors for sections - gradual progression
+    --bg-primary: #f5f7fa;          // Body/main background
+    --bg-section-1: #ffffff;        // Hero/HomePage - Pure white start
+    --bg-section-2: #fafbfc;        // DataSection - Very light transition
+    --bg-section-3: #f8f9fa;        // About/Services - Light transition
+    --bg-section-4: #f2f5f8;        // Skills - Medium transition
+    --bg-section-5: #eef2f6;       // Projects - Slightly darker transition
+    --bg-section-6: #f5f7fa;        // Contact - Back to primary
+    --bg-section-7: #f0f3f6;        // HobbyBlog - Light gray
+    // Card and component backgrounds - harmonized with sections
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --bg-card-light: rgba(255, 255, 255, 0.6);
+    --bg-navbar: rgba(255, 255, 255, 0.92);
+    --bg-ide: #ffffff;
+    --bg-ide-sidebar: #f8f9fa;
+    --bg-ide-header: #f0f4f8;
+    // Text colors - consistent across all sections (darker for better visibility)
+    --text-primary: #0a192f;
+    --text-secondary: #112240;
+    --text-tertiary: #343a40;
+    --text-dim: #495057;
+    // Borders and effects
+    --border-color: rgba(0, 0, 0, 0.08);
+    --border-accent: rgba(0, 217, 165, 0.25);
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+body{
+    background-color: var(--bg-primary);
+    color: var(--text-dim);
+    transition: background-color 0.5s ease, color 0.3s ease;
+}
+
 a{
     text-decoration: none;
     color: inherit; // takes parents color
 }
 
 section{
-   
     scroll-snap-align: center;
+    position: relative;
+    // Smooth transition indicator between sections
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            var(--border-accent) 50%, 
+            transparent 100%
+        );
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 1;
+    }
 }
 
 @mixin mobile {
     @media (max-width:738px) {
         @content;
-        
     }
 }
 @mixin tablet {
     @media (max-width:1024px) {
         @content;
-        
     }
 }
 @mixin desktop {
     @media (max-width:1366px) {
         @content;
-        
     }
 }

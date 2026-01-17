@@ -1,16 +1,15 @@
-$accent: #64ffda;
-$bg: #020408;
 $mono: 'Fira Code', 'JetBrains Mono', monospace;
 
 .skill-processor {
   min-height: 100vh;
-  background: $bg;
+  background: var(--bg-section-4);
   padding: 80px 40px;
   font-family: $mono;
-  color: #fff;
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color 0.5s ease, color 0.3s ease;
 
   .section-title {
     text-align: center;
@@ -20,15 +19,23 @@ $mono: 'Fira Code', 'JetBrains Mono', monospace;
       letter-spacing: 8px;
       margin: 0;
       position: relative;
-      color: #fff;
+      color: var(--text-primary);
+      transition: color 0.3s ease;
       &::after {
         content: attr(data-text);
-        position: absolute; left: 2px; text-shadow: -1px 0 $accent;
-        top: 0; color: #fff; background: $bg; overflow: hidden;
+        position: absolute; left: 2px; text-shadow: -1px 0 var(--accent-color);
+        top: 0; color: var(--text-primary); background: var(--bg-section-4); overflow: hidden;
         animation: glitch 3s infinite linear alternate-reverse;
+        transition: background 0.3s ease, color 0.3s ease;
       }
     }
-    .subtitle { font-size: 12px; color: $accent; margin-top: 10px; opacity: 0.6; }
+    .subtitle { 
+      font-size: 12px; 
+      color: var(--accent-color); 
+      margin-top: 10px; 
+      opacity: 0.6;
+      transition: color 0.3s ease;
+    }
   }
 
   .processor-wrapper {
@@ -43,8 +50,44 @@ $mono: 'Fira Code', 'JetBrains Mono', monospace;
   }
 
   .system-label {
-    font-size: 10px; letter-spacing: 3px; color: #444; margin-bottom: 30px;
-    span { color: $accent; }
+    font-size: 10px; 
+    letter-spacing: 3px; 
+    color: var(--text-tertiary); 
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
+    span { 
+      color: var(--accent-color);
+      transition: color 0.3s ease;
+    }
+  }
+
+  // Light theme text visibility improvements
+  body.light & {
+    .section-title h2 {
+      color: var(--text-primary);
+      font-weight: 900;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .skill-label {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .system-label {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+    
+    .term-body {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    
+    .code-content {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
   }
 
   // Left Input Styles
@@ -59,13 +102,34 @@ $mono: 'Fira Code', 'JetBrains Mono', monospace;
 
         .node-info {
           display: flex; align-items: center; gap: 15px; width: 140px;
-          .icon-box { font-size: 1.6rem; transition: color 0.5s; }
-          .skill-label { font-size: 13px; font-weight: 500; }
+          .icon-box { 
+            font-size: 1.6rem; 
+            transition: color 0.5s;
+            color: var(--text-primary);
+          }
+          .skill-label { 
+            font-size: 13px; 
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+          }
         }
 
         .stream-path {
-          flex: 1; height: 1px; background: rgba(255,255,255,0.05); position: relative;
-          .data-chunk { position: absolute; height: 3px; width: 15px; top: -1px; border-radius: 2px; }
+          flex: 1; 
+          height: 1px; 
+          background: var(--border-color); 
+          position: relative;
+          transition: background 0.3s ease;
+          .data-chunk { 
+            position: absolute; 
+            height: 3px; 
+            width: 15px; 
+            top: -1px; 
+            border-radius: 2px;
+            background: var(--accent-color);
+            transition: background 0.3s ease;
+          }
         }
       }
     }
@@ -77,20 +141,120 @@ $mono: 'Fira Code', 'JetBrains Mono', monospace;
     .brain-container {
       position: relative; width: 180px; height: 180px; margin-bottom: 50px;
       .brain-shell { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 5rem; z-index: 5; }
-      .core-glow { position: absolute; inset: 0; border-radius: 50%; filter: blur(60px); opacity: 0.15; transition: background 0.8s ease; }
+      .core-glow { 
+        position: absolute; 
+        inset: 0; 
+        border-radius: 50%; 
+        filter: blur(60px); 
+        opacity: 0.15; 
+        background: var(--accent-color);
+        transition: background 0.8s ease; 
+      }
     }
     .mini-terminal {
-      width: 100%; max-width: 450px; background: #010409; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
-      .term-header { background: #0d1117; padding: 10px 15px; display: flex; align-items: center; gap: 12px; font-size: 10px; color: #555; .term-dots { display: flex; gap: 5px; span { width: 6px; height: 6px; border-radius: 50%; background: #222; } } }
-      .term-body { padding: 18px; font-size: 13px; min-height: 100px; .prompt { color: $accent; margin-right: 10px; } .term-success { color: #98c379; margin-top: 8px; } .cursor { animation: blink 1s infinite; color: $accent; } }
+      width: 100%; 
+      max-width: 450px; 
+      background: var(--bg-ide-sidebar); 
+      border: 1px solid var(--border-color); 
+      border-radius: 8px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      .term-header { 
+        background: var(--bg-ide-header); 
+        padding: 10px 15px; 
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+        font-size: 10px; 
+        color: var(--text-tertiary);
+        transition: background 0.3s ease, color 0.3s ease;
+        .term-dots { 
+          display: flex; 
+          gap: 5px; 
+          span { 
+            width: 6px; 
+            height: 6px; 
+            border-radius: 50%; 
+            background: var(--border-color);
+            transition: background 0.3s ease;
+          } 
+        } 
+      }
+      .term-body { 
+        padding: 18px; 
+        font-size: 13px; 
+        min-height: 100px;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
+        .prompt { 
+          color: var(--accent-color); 
+          margin-right: 10px;
+          transition: color 0.3s ease;
+        } 
+        .term-success { 
+          color: #98c379; 
+          margin-top: 8px; 
+        } 
+        .cursor { 
+          animation: blink 1s infinite; 
+          color: var(--accent-color);
+          transition: color 0.3s ease;
+        } 
+      }
     }
   }
 
   // Right Editor Styles
   .editor-window {
-    background: #010409; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-    .editor-tab { padding: 12px 20px; font-size: 11px; color: #666; background: #0d1117; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .editor-body { padding: 25px; display: flex; gap: 20px; .line-numbers { display: flex; flex-direction: column; color: #222; font-size: 13px; text-align: right; } .code-content { font-size: 14px; color: #e6edf3; line-height: 1.7; white-space: pre; margin: 0; code { font-family: $mono; } .typing-cursor { display: inline-block; width: 6px; height: 15px; margin-left: 5px; animation: blink 1s infinite; } } }
+    background: var(--bg-ide-sidebar); 
+    border: 1px solid var(--border-color); 
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 30px 60px var(--shadow-color);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    .editor-tab { 
+      padding: 12px 20px; 
+      font-size: 11px; 
+      color: var(--text-tertiary); 
+      background: var(--bg-ide-header); 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    } 
+    .editor-body { 
+      padding: 25px; 
+      display: flex; 
+      gap: 20px;
+      .line-numbers { 
+        display: flex; 
+        flex-direction: column; 
+        color: var(--text-tertiary); 
+        font-size: 13px; 
+        text-align: right;
+        transition: color 0.3s ease;
+      } 
+      .code-content { 
+        font-size: 14px; 
+        color: var(--text-primary); 
+        line-height: 1.7; 
+        white-space: pre; 
+        margin: 0;
+        transition: color 0.3s ease;
+        code { 
+          font-family: $mono; 
+        } 
+        .typing-cursor { 
+          display: inline-block; 
+          width: 6px; 
+          height: 15px; 
+          margin-left: 5px; 
+          animation: blink 1s infinite;
+          background: var(--accent-color);
+          transition: background 0.3s ease;
+        } 
+      } 
+    }
   }
 }
 

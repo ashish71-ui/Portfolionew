@@ -1,0 +1,681 @@
+$mono: 'Fira Code', 'JetBrains Mono', monospace;
+
+.hobby-section {
+  min-height: 100vh;
+  background: var(--bg-section-7);
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 80px;
+    h2 {
+      font-size: 3rem;
+      letter-spacing: 10px;
+      color: var(--text-primary);
+      margin: 0;
+      font-weight: 900;
+      transition: color 0.3s ease;
+      position: relative;
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        text-shadow: -1px 0 var(--accent-color);
+        top: 0;
+        color: var(--text-primary);
+        background: var(--bg-section-7);
+        overflow: hidden;
+        animation: glitch 3s infinite linear alternate-reverse;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+    }
+    .subtitle {
+      font-size: 10px;
+      color: var(--accent-color);
+      margin-top: 10px;
+      letter-spacing: 4px;
+      opacity: 0.7;
+      transition: color 0.3s ease;
+    }
+  }
+
+  .harmonics-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    max-width: 1400px;
+    margin: 0 auto 80px;
+    z-index: 10;
+    position: relative;
+
+    @media (max-width: 1024px) { 
+      grid-template-columns: 1fr; 
+      gap: 60px;
+    }
+  }
+
+  .instrument-header {
+    margin-bottom: 30px;
+    .label {
+      font-family: $mono;
+      font-size: 11px;
+      color: var(--text-tertiary);
+      border-left: 2px solid var(--accent-color);
+      padding-left: 10px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+  }
+
+  // Guitar Styles
+  .guitar-instrument {
+    .fretboard {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 40px;
+      background: var(--bg-card-light);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      position: relative;
+      transition: background 0.3s ease, border-color 0.3s ease;
+
+      .string-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        cursor: pointer;
+        height: 30px;
+
+        .note-name { 
+          font-family: $mono; 
+          font-size: 12px; 
+          color: var(--text-tertiary); 
+          width: 20px;
+          transition: color 0.3s ease;
+        }
+        .string-line { 
+          flex: 1; 
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+
+        .floating-card {
+          position: absolute;
+          left: 60%;
+          background: var(--bg-card);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border-accent);
+          padding: 20px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          width: 300px;
+          z-index: 20;
+          box-shadow: 0 20px 40px var(--shadow-color);
+          transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+          .card-icon { font-size: 2rem; }
+          h4 { 
+            margin: 0; 
+            color: var(--text-primary); 
+            font-size: 16px;
+            transition: color 0.3s ease;
+          }
+          p { 
+            margin: 5px 0 0; 
+            color: var(--text-tertiary); 
+            font-size: 12px; 
+            line-height: 1.4;
+            transition: color 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+
+  // Piano Styles
+  .piano-instrument {
+    .keyboard {
+      display: flex;
+      height: 200px;
+      position: relative;
+      background: var(--bg-ide-sidebar);
+      padding: 5px;
+      border-radius: 10px;
+      box-shadow: 0 20px 50px var(--shadow-color);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+
+      .key {
+        cursor: pointer;
+        position: relative;
+        transition: 0.1s;
+
+        &.white {
+          flex: 1;
+          background: var(--bg-card);
+          border-right: 1px solid var(--border-color);
+          border-radius: 0 0 5px 5px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 0;
+          transition: background 0.3s ease, border-color 0.3s ease;
+          .key-icon { 
+            font-size: 1.2rem; 
+            opacity: 0.5;
+          }
+          .key-note { 
+            font-family: $mono; 
+            font-size: 10px; 
+            color: var(--text-tertiary);
+            transition: color 0.3s ease;
+          }
+          &:hover { 
+            background: var(--bg-card-light);
+          }
+        }
+
+        &.black {
+          width: 30px;
+          height: 120px;
+          background: var(--bg-ide-header);
+          margin-left: -15px;
+          margin-right: -15px;
+          z-index: 5;
+          border-radius: 0 0 3px 3px;
+          border: 1px solid var(--border-color);
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          padding-bottom: 10px;
+          transition: background 0.3s ease, border-color 0.3s ease;
+          .key-note { 
+            font-family: $mono; 
+            font-size: 9px; 
+            color: var(--text-tertiary);
+            transition: color 0.3s ease;
+          }
+          &:hover { 
+            background: var(--bg-ide);
+          }
+        }
+      }
+    }
+
+    .piano-display {
+      margin-top: 40px;
+      background: var(--bg-card-light);
+      border: 1px solid var(--border-color);
+      border-radius: 15px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: background 0.3s ease, border-color 0.3s ease;
+
+      .display-idle { 
+        font-family: $mono; 
+        font-size: 12px; 
+        color: var(--text-tertiary); 
+        letter-spacing: 2px;
+        transition: color 0.3s ease;
+      }
+      
+      .display-content {
+        .topic-icon { 
+          font-size: 3rem; 
+          display: block; 
+          margin-bottom: 10px; 
+        }
+        h3 { 
+          font-size: 24px; 
+          color: var(--text-primary); 
+          margin: 0;
+          transition: color 0.3s ease;
+        }
+        .meta { 
+          font-family: $mono; 
+          font-size: 10px; 
+          color: var(--accent-color); 
+          margin-top: 10px;
+          transition: color 0.3s ease;
+        }
+      }
+    }
+  }
+
+  // Blogging Section
+  .blogging-section {
+    max-width: 1400px;
+    margin: 80px auto 0;
+    z-index: 10;
+    position: relative;
+
+    .blog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      gap: 30px;
+
+      .blog-title-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .blog-icon {
+          color: var(--accent-color);
+          size: 24px;
+          transition: color 0.3s ease;
+        }
+
+        h3 {
+          font-family: $mono;
+          font-size: 1.5rem;
+          color: var(--text-primary);
+          margin: 0;
+          letter-spacing: 3px;
+          transition: color 0.3s ease;
+        }
+
+        .blog-subtitle {
+          font-family: $mono;
+          font-size: 10px;
+          color: var(--text-tertiary);
+          letter-spacing: 2px;
+          margin-left: 10px;
+          transition: color 0.3s ease;
+        }
+      }
+
+      .blog-filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        .filter-btn {
+          padding: 8px 16px;
+          background: var(--bg-card-light);
+          border: 1px solid var(--border-color);
+          color: var(--text-secondary);
+          font-family: $mono;
+          font-size: 11px;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+          }
+
+          &.active {
+            background: var(--border-accent);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .blog-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--accent-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        border-color: var(--border-accent);
+        box-shadow: 0 10px 30px var(--shadow-color);
+        transform: translateY(-5px);
+
+        &::before {
+          transform: scaleX(1);
+        }
+
+        .read-more {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .blog-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+
+        .blog-category {
+          font-family: $mono;
+          font-size: 10px;
+          color: var(--accent-color);
+          padding: 4px 10px;
+          background: var(--border-accent);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+
+        .blog-stats {
+          display: flex;
+          gap: 15px;
+
+          .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: $mono;
+            font-size: 11px;
+            color: var(--text-tertiary);
+            transition: color 0.3s ease;
+
+            svg {
+              color: var(--accent-color);
+              transition: color 0.3s ease;
+            }
+          }
+        }
+      }
+
+      .blog-card-title {
+        font-size: 1.3rem;
+        color: var(--text-primary);
+        margin: 0 0 12px 0;
+        font-weight: 700;
+        line-height: 1.3;
+        transition: color 0.3s ease;
+      }
+
+      .blog-card-excerpt {
+        color: var(--text-tertiary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+        transition: color 0.3s ease;
+      }
+
+      .blog-card-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .blog-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+
+          .blog-tag {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: $mono;
+            font-size: 10px;
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            background: var(--bg-card-light);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+
+            svg {
+              color: var(--accent-color);
+              transition: color 0.3s ease;
+            }
+          }
+        }
+
+        .blog-meta {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: $mono;
+          font-size: 11px;
+          color: var(--text-tertiary);
+          transition: color 0.3s ease;
+
+          svg {
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+          }
+
+          .read-time {
+            opacity: 0.7;
+          }
+        }
+      }
+
+      .read-more {
+        position: absolute;
+        bottom: 20px;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-family: $mono;
+        font-size: 11px;
+        color: var(--accent-color);
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s ease;
+
+        svg {
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+  }
+
+  // Blog Modal
+  .blog-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .blog-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border-accent);
+    border-radius: 20px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 30px 60px var(--shadow-color);
+    transition: background 0.3s ease, border-color 0.3s ease;
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 2rem;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: var(--bg-card-light);
+        color: var(--accent-color);
+      }
+    }
+
+    .modal-header {
+      margin-bottom: 30px;
+
+      .modal-category {
+        display: inline-block;
+        font-family: $mono;
+        font-size: 10px;
+        color: var(--accent-color);
+        padding: 4px 10px;
+        background: var(--border-accent);
+        border-radius: 4px;
+        margin-bottom: 15px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        color: var(--text-primary);
+        margin: 0 0 15px 0;
+        line-height: 1.3;
+        transition: color 0.3s ease;
+      }
+
+      .modal-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: $mono;
+        font-size: 12px;
+        color: var(--text-tertiary);
+        transition: color 0.3s ease;
+
+        svg {
+          color: var(--accent-color);
+          transition: color 0.3s ease;
+        }
+      }
+    }
+
+    .modal-content {
+      p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 20px;
+        transition: color 0.3s ease;
+      }
+
+      .modal-full-text {
+        color: var(--text-tertiary);
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .modal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+
+        .modal-tag {
+          font-family: $mono;
+          font-size: 11px;
+          color: var(--text-secondary);
+          padding: 6px 12px;
+          background: var(--bg-card-light);
+          border: 1px solid var(--border-color);
+          border-radius: 6px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
+  }
+
+  // Visualizer Bar
+  .wave-bg {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1;
+    .wave-bar { 
+      width: 3px; 
+      background: var(--accent-color); 
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+  }
+}
+
+@keyframes glitch { 
+  0% { clip: rect(44px, 9999px, 56px, 0); } 
+  20% { clip: rect(12px, 9999px, 99px, 0); } 
+  40% { clip: rect(76px, 9999px, 12px, 0); } 
+  60% { clip: rect(23px, 9999px, 88px, 0); } 
+  80% { clip: rect(98px, 9999px, 45px, 0); } 
+  100% { clip: rect(10px, 9999px, 85px, 0); } 
+}
+
+@media (max-width: 768px) {
+  .hobby-section {
+    padding: 60px 20px;
+    .harmonics-container { gap: 40px; }
+    .guitar-instrument .fretboard .floating-card { 
+      left: 0; 
+      top: 100%; 
+      width: 100%; 
+    }
+    .piano-instrument .keyboard { 
+      height: 150px; 
+      .key.black { 
+        width: 20px; 
+        margin-left: -10px; 
+        margin-right: -10px; 
+      } 
+    }
+    .blogging-section .blog-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

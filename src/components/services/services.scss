@@ -1,12 +1,9 @@
-$accent: #64ffda;
-$bg-navy: #0a192f;
-$text-slate: #8892b0;
-
 .experience-section {
-  background-color: $bg-navy;
+  background-color: var(--bg-section-3);
   padding: 100px 20px;
-  color: #fff;
+  color: var(--text-primary);
   font-family: 'JetBrains Mono', monospace;
+  transition: background-color 0.5s ease, color 0.3s ease;
 
   .wrapper {
     max-width: 1100px;
@@ -22,8 +19,16 @@ $text-slate: #8892b0;
       align-items: center;
       gap: 15px;
       margin-bottom: 50px;
-      h2 { font-size: 1.5rem; letter-spacing: 3px; color: $accent; }
-      .icon { color: $accent; }
+      h2 { 
+        font-size: 1.5rem; 
+        letter-spacing: 3px; 
+        color: var(--accent-color);
+        transition: color 0.3s ease;
+      }
+      .icon { 
+        color: var(--accent-color);
+        transition: color 0.3s ease;
+      }
     }
   }
 
@@ -36,22 +41,54 @@ $text-slate: #8892b0;
       position: relative;
       .node-line {
         width: 2px;
-        background: rgba($accent, 0.2);
+        background: var(--border-accent);
         position: relative;
         .node-dot {
-          width: 12px; height: 12px; background: $accent;
-          border-radius: 50%; position: absolute; left: -5px; top: 0;
-          box-shadow: 0 0 10px $accent;
+          width: 12px; 
+          height: 12px; 
+          background: var(--accent-color);
+          border-radius: 50%; 
+          position: absolute; 
+          left: -5px; 
+          top: 0;
+          box-shadow: 0 0 10px var(--accent-color);
+          transition: background 0.3s ease, box-shadow 0.3s ease;
         }
       }
       .work-content {
         padding-bottom: 50px;
-        h3 { font-size: 1.4rem; .at { color: $accent; } }
-        .date-tag { color: $accent; font-size: 0.8rem; border: 1px solid $accent; padding: 2px 8px; margin-bottom: 10px; display: inline-block; }
-        .location { color: $text-slate; margin-bottom: 15px; }
+        h3 { 
+          font-size: 1.4rem; 
+          color: var(--text-primary);
+          transition: color 0.3s ease;
+          .at { color: var(--accent-color); }
+        }
+        .date-tag { 
+          color: var(--accent-color); 
+          font-size: 0.8rem; 
+          border: 1px solid var(--accent-color); 
+          padding: 2px 8px; 
+          margin-bottom: 10px; 
+          display: inline-block;
+          transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .location { 
+          color: var(--text-tertiary); 
+          margin-bottom: 15px;
+          transition: color 0.3s ease;
+        }
         .task-list {
-          list-style: none; padding: 0;
-          li { display: flex; align-items: center; gap: 10px; color: $text-slate; font-size: 0.9rem; margin-bottom: 5px; }
+          list-style: none; 
+          padding: 0;
+          li { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: var(--text-tertiary); 
+            font-size: 0.9rem; 
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+          }
         }
       }
     }
@@ -63,189 +100,46 @@ $text-slate: #8892b0;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     .edu-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--bg-card-light);
+      border: 1px solid var(--border-color);
       padding: 25px;
       border-radius: 4px;
+      transition: background 0.3s ease, border-color 0.3s ease;
       .card-header {
-        display: flex; justify-content: space-between; color: $accent;
-        margin-bottom: 15px; .type { font-size: 0.7rem; font-weight: bold; }
+        display: flex; 
+        justify-content: space-between; 
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        transition: color 0.3s ease;
+        .type { font-size: 0.7rem; font-weight: bold; }
       }
-      h3 { font-size: 1.2rem; margin-bottom: 5px; }
-      .major { color: $text-slate; font-size: 0.9rem; margin-bottom: 20px; }
+      h3 { 
+        font-size: 1.2rem; 
+        margin-bottom: 5px;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
+      }
+      .major { 
+        color: var(--text-tertiary); 
+        font-size: 0.9rem; 
+        margin-bottom: 20px;
+        transition: color 0.3s ease;
+      }
       .stats {
-        font-size: 0.7rem; color: $text-slate;
+        font-size: 0.7rem; 
+        color: var(--text-tertiary);
+        transition: color 0.3s ease;
         .progress-mini {
-          height: 2px; background: rgba(255,255,255,0.1); margin-top: 5px;
-          .bar { height: 100%; background: $accent; box-shadow: 0 0 5px $accent; }
-        }
-      }
-    }
-  }
-}$accent: #64ffda;
-$bg-navy: #0a192f;
-$text-slate: #8892b0;
-
-.experience-section {
-  background-color: $bg-navy;
-  padding: 100px 20px;
-  color: #fff;
-  font-family: 'JetBrains Mono', monospace;
-
-  .wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-  }
-
-  .section-block {
-    .title-group {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 50px;
-      h2 { font-size: 1.5rem; letter-spacing: 3px; color: $accent; }
-      .icon { color: $accent; }
-    }
-  }
-
-  /* Work Timeline Styling */
-  .work-timeline {
-    padding-left: 20px;
-    .work-item {
-      display: flex;
-      gap: 30px;
-      position: relative;
-      .node-line {
-        width: 2px;
-        background: rgba($accent, 0.2);
-        position: relative;
-        .node-dot {
-          width: 12px; height: 12px; background: $accent;
-          border-radius: 50%; position: absolute; left: -5px; top: 0;
-          box-shadow: 0 0 10px $accent;
-        }
-      }
-      .work-content {
-        padding-bottom: 50px;
-        h3 { font-size: 1.4rem; .at { color: $accent; } }
-        .date-tag { color: $accent; font-size: 0.8rem; border: 1px solid $accent; padding: 2px 8px; margin-bottom: 10px; display: inline-block; }
-        .location { color: $text-slate; margin-bottom: 15px; }
-        .task-list {
-          list-style: none; padding: 0;
-          li { display: flex; align-items: center; gap: 10px; color: $text-slate; font-size: 0.9rem; margin-bottom: 5px; }
-        }
-      }
-    }
-  }
-
-  /* Education Grid Styling */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    .edu-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 4px;
-      .card-header {
-        display: flex; justify-content: space-between; color: $accent;
-        margin-bottom: 15px; .type { font-size: 0.7rem; font-weight: bold; }
-      }
-      h3 { font-size: 1.2rem; margin-bottom: 5px; }
-      .major { color: $text-slate; font-size: 0.9rem; margin-bottom: 20px; }
-      .stats {
-        font-size: 0.7rem; color: $text-slate;
-        .progress-mini {
-          height: 2px; background: rgba(255,255,255,0.1); margin-top: 5px;
-          .bar { height: 100%; background: $accent; box-shadow: 0 0 5px $accent; }
-        }
-      }
-    }
-  }
-}$accent: #64ffda;
-$bg-navy: #0a192f;
-$text-slate: #8892b0;
-
-.experience-section {
-  background-color: $bg-navy;
-  padding: 100px 20px;
-  color: #fff;
-  font-family: 'JetBrains Mono', monospace;
-
-  .wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-  }
-
-  .section-block {
-    .title-group {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 50px;
-      h2 { font-size: 1.5rem; letter-spacing: 3px; color: $accent; }
-      .icon { color: $accent; }
-    }
-  }
-
-  /* Work Timeline Styling */
-  .work-timeline {
-    padding-left: 20px;
-    .work-item {
-      display: flex;
-      gap: 30px;
-      position: relative;
-      .node-line {
-        width: 2px;
-        background: rgba($accent, 0.2);
-        position: relative;
-        .node-dot {
-          width: 12px; height: 12px; background: $accent;
-          border-radius: 50%; position: absolute; left: -5px; top: 0;
-          box-shadow: 0 0 10px $accent;
-        }
-      }
-      .work-content {
-        padding-bottom: 50px;
-        h3 { font-size: 1.4rem; .at { color: $accent; } }
-        .date-tag { color: $accent; font-size: 0.8rem; border: 1px solid $accent; padding: 2px 8px; margin-bottom: 10px; display: inline-block; }
-        .location { color: $text-slate; margin-bottom: 15px; }
-        .task-list {
-          list-style: none; padding: 0;
-          li { display: flex; align-items: center; gap: 10px; color: $text-slate; font-size: 0.9rem; margin-bottom: 5px; }
-        }
-      }
-    }
-  }
-
-  /* Education Grid Styling */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    .edu-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 4px;
-      .card-header {
-        display: flex; justify-content: space-between; color: $accent;
-        margin-bottom: 15px; .type { font-size: 0.7rem; font-weight: bold; }
-      }
-      h3 { font-size: 1.2rem; margin-bottom: 5px; }
-      .major { color: $text-slate; font-size: 0.9rem; margin-bottom: 20px; }
-      .stats {
-        font-size: 0.7rem; color: $text-slate;
-        .progress-mini {
-          height: 2px; background: rgba(255,255,255,0.1); margin-top: 5px;
-          .bar { height: 100%; background: $accent; box-shadow: 0 0 5px $accent; }
+          height: 2px; 
+          background: var(--border-color); 
+          margin-top: 5px;
+          transition: background 0.3s ease;
+          .bar { 
+            height: 100%; 
+            background: var(--accent-color); 
+            box-shadow: 0 0 5px var(--accent-color);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+          }
         }
       }
     }
