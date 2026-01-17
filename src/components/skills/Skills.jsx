@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaPython, FaReact, FaDatabase, FaBrain } from "react-icons/fa";
 import { SiDjango, SiTailwindcss, SiJavascript } from "react-icons/si";
 import { motion } from "framer-motion";
-import "./Skills.scss";
+import "./skills.scss";
 
 const skills = [
   { name: "React", icon: FaReact, color: "#61DAFB", ext: ".jsx", syntax: "export const Hero = () => {\n  return <section />\n}", cmd: "npm install framer-motion" },
