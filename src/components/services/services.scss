@@ -145,3 +145,87 @@
     }
   }
 }
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .experience-section {
+    padding: 80px 20px;
+    
+    .wrapper {
+      gap: 80px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 60px 15px;
+    
+    .wrapper {
+      gap: 60px;
+    }
+    
+    .section-block {
+      .title-group {
+        margin-bottom: 30px;
+        
+        h2 {
+          font-size: 1.2rem;
+          letter-spacing: 2px;
+        }
+      }
+    }
+    
+    .work-timeline {
+      padding-left: 15px;
+      
+      .work-item {
+        gap: 20px;
+        
+        .work-content {
+          h3 {
+            font-size: 1.2rem;
+          }
+          
+          .task-list li {
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+    
+    .edu-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      
+      .edu-card {
+        padding: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 40px 10px;
+    
+    .section-block .title-group h2 {
+      font-size: 1rem;
+    }
+    
+    .work-timeline .work-item {
+      flex-direction: column;
+      gap: 15px;
+      
+      .node-line {
+        width: 100%;
+        height: 2px;
+        
+        .node-dot {
+          left: 0;
+          top: -5px;
+        }
+      }
+    }
+  }
+}

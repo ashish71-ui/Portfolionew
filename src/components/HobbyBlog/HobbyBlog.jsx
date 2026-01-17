@@ -1,30 +1,128 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, Calendar, ArrowRight, Tag, Heart, Eye } from 'lucide-react';
 import "./HobbyBlog.scss";
 
-const guitarStrings = [
-  { note: 'E', color: '#FF6B6B', destination: 'Nepal', icon: '🏔️', story: 'Trekking the Himalayas, where every step echoes ancient trails.' },
-  { note: 'A', color: '#4ECDC4', destination: 'Bali', icon: '🌴', story: 'Island vibes and temple sunsets, finding peace in tropical chaos.' },
-  { note: 'D', color: '#45B7D1', destination: 'Iceland', icon: '❄️', story: 'Northern lights dancing over volcanic landscapes.' },
-  { note: 'G', color: '#FFA07A', destination: 'Morocco', icon: '🕌', story: 'Spice markets and desert winds, colors that paint memories.' },
-  { note: 'B', color: '#98D8C8', destination: 'Japan', icon: '🎌', story: 'Cherry blossoms and bullet trains, where tradition meets future.' },
-  { note: 'e', color: '#F7DC6F', destination: 'Patagonia', icon: '⛰️', story: 'Glaciers and endless horizons, nature in its rawest form.' },
+// Multiple content items for each guitar string
+const guitarStringsData = [
+  { 
+    note: 'E', 
+    color: '#FF6B6B', 
+    content: [
+      { destination: 'Nepal', icon: '🏔️', story: 'Trekking the Himalayas, where every step echoes ancient trails.' },
+      { destination: 'Everest Base Camp', icon: '⛰️', story: 'Standing at 5,364m, where the sky meets the earth.' },
+      { destination: 'Pokhara', icon: '🏞️', story: 'Lakeside serenity and mountain reflections.' }
+    ]
+  },
+  { 
+    note: 'A', 
+    color: '#4ECDC4', 
+    content: [
+      { destination: 'Bali', icon: '🌴', story: 'Island vibes and temple sunsets, finding peace in tropical chaos.' },
+      { destination: 'Ubud', icon: '🌿', story: 'Rice terraces and spiritual awakening in the heart of Bali.' },
+      { destination: 'Seminyak', icon: '🏖️', story: 'Beach vibes and vibrant nightlife under the stars.' }
+    ]
+  },
+  { 
+    note: 'D', 
+    color: '#45B7D1', 
+    content: [
+      { destination: 'Iceland', icon: '❄️', story: 'Northern lights dancing over volcanic landscapes.' },
+      { destination: 'Reykjavik', icon: '🌋', story: 'Geysers and hot springs in the land of fire and ice.' },
+      { destination: 'Golden Circle', icon: '💎', story: 'Waterfalls and geysers in nature\'s masterpiece.' }
+    ]
+  },
+  { 
+    note: 'G', 
+    color: '#FFA07A', 
+    content: [
+      { destination: 'Morocco', icon: '🕌', story: 'Spice markets and desert winds, colors that paint memories.' },
+      { destination: 'Marrakech', icon: '🎨', story: 'Souk labyrinths and vibrant medina life.' },
+      { destination: 'Sahara', icon: '🐪', story: 'Desert nights under a blanket of stars.' }
+    ]
+  },
+  { 
+    note: 'B', 
+    color: '#98D8C8', 
+    content: [
+      { destination: 'Japan', icon: '🎌', story: 'Cherry blossoms and bullet trains, where tradition meets future.' },
+      { destination: 'Tokyo', icon: '🏙️', story: 'Neon lights and ancient temples in perfect harmony.' },
+      { destination: 'Kyoto', icon: '⛩️', story: 'Temples, gardens, and the essence of old Japan.' }
+    ]
+  },
+  { 
+    note: 'e', 
+    color: '#F7DC6F', 
+    content: [
+      { destination: 'Patagonia', icon: '⛰️', story: 'Glaciers and endless horizons, nature in its rawest form.' },
+      { destination: 'Torres del Paine', icon: '🏔️', story: 'Towering peaks and pristine wilderness.' },
+      { destination: 'Perito Moreno', icon: '🧊', story: 'Massive glaciers calving into turquoise waters.' }
+    ]
+  },
 ];
 
-const pianoKeys = [
-  { note: 'C', type: 'white', topic: 'Morning Rituals', icon: '☕' },
-  { note: 'C#', type: 'black', topic: 'Late Night Code', icon: '💻' },
-  { note: 'D', type: 'white', topic: 'Guitar Sessions', icon: '🎸' },
-  { note: 'D#', type: 'black', topic: 'Photography', icon: '📷' },
-  { note: 'E', type: 'white', topic: 'Running Trails', icon: '🏃' },
-  { note: 'F', type: 'white', topic: 'Cooking Experiments', icon: '🍳' },
-  { note: 'F#', type: 'black', topic: 'Podcasts', icon: '🎙️' },
-  { note: 'G', type: 'white', topic: 'Book Reviews', icon: '📚' },
-  { note: 'G#', type: 'black', topic: 'Design Inspiration', icon: '🎨' },
-  { note: 'A', type: 'white', topic: 'Weekend Hikes', icon: '🥾' },
-  { note: 'A#', type: 'black', topic: 'Music Discovery', icon: '🎵' },
-  { note: 'B', type: 'white', topic: 'Meditation', icon: '🧘' },
+// Multiple content items for each piano key
+const pianoKeysData = [
+  { note: 'C', type: 'white', icon: '☕', content: [
+    { topic: 'Morning Rituals', description: 'Starting the day with intention and focus.' },
+    { topic: 'Coffee & Code', description: 'The perfect blend of caffeine and creativity.' },
+    { topic: 'Sunrise Meditation', description: 'Finding peace before the day begins.' }
+  ]},
+  { note: 'C#', type: 'black', icon: '💻', content: [
+    { topic: 'Late Night Code', description: 'When the world sleeps, ideas come alive.' },
+    { topic: 'Debugging Sessions', description: 'Solving puzzles one line at a time.' },
+    { topic: 'Side Projects', description: 'Building dreams after hours.' }
+  ]},
+  { note: 'D', type: 'white', icon: '🎸', content: [
+    { topic: 'Guitar Sessions', description: 'Strings and melodies, a language of emotion.' },
+    { topic: 'Learning New Songs', description: 'Each chord tells a story.' },
+    { topic: 'Jam Sessions', description: 'Creating music with friends.' }
+  ]},
+  { note: 'D#', type: 'black', icon: '📷', content: [
+    { topic: 'Photography', description: 'Capturing moments, freezing time.' },
+    { topic: 'Street Photography', description: 'Life in candid frames.' },
+    { topic: 'Nature Shots', description: 'Beauty in every corner.' }
+  ]},
+  { note: 'E', type: 'white', icon: '🏃', content: [
+    { topic: 'Running Trails', description: 'Miles of freedom, one step at a time.' },
+    { topic: 'Marathon Training', description: 'Pushing limits, breaking barriers.' },
+    { topic: 'Trail Running', description: 'Nature as the ultimate gym.' }
+  ]},
+  { note: 'F', type: 'white', icon: '🍳', content: [
+    { topic: 'Cooking Experiments', description: 'Turning ingredients into art.' },
+    { topic: 'New Recipes', description: 'Exploring flavors from around the world.' },
+    { topic: 'Baking Adventures', description: 'Sweet creations and happy mistakes.' }
+  ]},
+  { note: 'F#', type: 'black', icon: '🎙️', content: [
+    { topic: 'Podcasts', description: 'Learning while on the move.' },
+    { topic: 'Tech Talks', description: 'Staying updated with industry trends.' },
+    { topic: 'Storytelling', description: 'Narratives that inspire and educate.' }
+  ]},
+  { note: 'G', type: 'white', icon: '📚', content: [
+    { topic: 'Book Reviews', description: 'Journeys through pages and minds.' },
+    { topic: 'Reading Challenges', description: 'Expanding horizons one book at a time.' },
+    { topic: 'Library Visits', description: 'Discovering hidden literary gems.' }
+  ]},
+  { note: 'G#', type: 'black', icon: '🎨', content: [
+    { topic: 'Design Inspiration', description: 'Beauty in form and function.' },
+    { topic: 'UI/UX Studies', description: 'Crafting experiences that matter.' },
+    { topic: 'Creative Projects', description: 'Where imagination meets reality.' }
+  ]},
+  { note: 'A', type: 'white', icon: '🥾', content: [
+    { topic: 'Weekend Hikes', description: 'Escaping to nature\'s embrace.' },
+    { topic: 'Mountain Climbing', description: 'Reaching new heights, literally.' },
+    { topic: 'Camping Trips', description: 'Stars, stories, and simplicity.' }
+  ]},
+  { note: 'A#', type: 'black', icon: '🎵', content: [
+    { topic: 'Music Discovery', description: 'Finding new sounds and rhythms.' },
+    { topic: 'Concert Experiences', description: 'Live music, unforgettable moments.' },
+    { topic: 'Playlist Curation', description: 'Crafting the perfect soundtrack.' }
+  ]},
+  { note: 'B', type: 'white', icon: '🧘', content: [
+    { topic: 'Meditation', description: 'Finding stillness in chaos.' },
+    { topic: 'Mindfulness Practice', description: 'Being present in every moment.' },
+    { topic: 'Yoga Sessions', description: 'Balance of body and mind.' }
+  ]},
 ];
 
 const blogPosts = [
@@ -76,9 +174,46 @@ const blogPosts = [
 
 const HobbyBlog = () => {
   const [activeString, setActiveString] = useState(null);
+  const [stringContentIndex, setStringContentIndex] = useState({});
   const [activeKey, setActiveKey] = useState(null);
+  const [keyContentIndex, setKeyContentIndex] = useState({});
   const [selectedPost, setSelectedPost] = useState(null);
   const [blogFilter, setBlogFilter] = useState('All');
+  const pianoIntervalRef = useRef(null);
+
+  // Auto-click piano keys in a pattern
+  useEffect(() => {
+    const pattern = [0, 2, 4, 5, 7, 9, 11, 9, 7, 5, 4, 2, 0]; // C major scale pattern
+    let patternIndex = 0;
+
+    pianoIntervalRef.current = setInterval(() => {
+      const keyIndex = pattern[patternIndex];
+      setActiveKey(keyIndex);
+      
+      // Cycle through content for this key
+      setKeyContentIndex(prev => ({
+        ...prev,
+        [keyIndex]: ((prev[keyIndex] || 0) + 1) % pianoKeysData[keyIndex].content.length
+      }));
+
+      patternIndex = (patternIndex + 1) % pattern.length;
+    }, 2000); // Change every 2 seconds
+
+    return () => {
+      if (pianoIntervalRef.current) {
+        clearInterval(pianoIntervalRef.current);
+      }
+    };
+  }, []);
+
+  // Handle guitar string click - cycle through content
+  const handleStringClick = (stringIndex) => {
+    setActiveString(stringIndex);
+    setStringContentIndex(prev => ({
+      ...prev,
+      [stringIndex]: ((prev[stringIndex] || 0) + 1) % guitarStringsData[stringIndex].content.length
+    }));
+  };
 
   const filteredPosts = blogFilter === 'All' 
     ? blogPosts 
@@ -99,45 +234,55 @@ const HobbyBlog = () => {
         <div className="guitar-instrument">
           <div className="instrument-header">
             <span className="label">STRINGS_OF_WANDERLUST</span>
+            <span className="hint">Click strings to cycle through destinations</span>
           </div>
           
           <div className="fretboard">
-            {guitarStrings.map((string, idx) => (
-              <div 
-                key={idx} 
-                className="string-wrapper"
-                onMouseEnter={() => setActiveString(idx)}
-                onMouseLeave={() => setActiveString(null)}
-              >
-                <div className="note-name">{string.note}</div>
-                <motion.div 
-                  className="string-line"
-                  animate={{ 
-                    scaleY: activeString === idx ? [1, 1.5, 1] : 1,
-                    boxShadow: activeString === idx ? `0 0 15px ${string.color}` : "none"
-                  }}
-                  transition={{ repeat: activeString === idx ? Infinity : 0, duration: 0.2 }}
-                  style={{ backgroundColor: string.color, height: `${1 + idx * 0.5}px` }}
-                />
-                
-                <AnimatePresence>
-                  {activeString === idx && (
-                    <motion.div 
-                      className="floating-card"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 50 }}
-                      exit={{ opacity: 0, x: 20 }}
-                    >
-                      <span className="card-icon">{string.icon}</span>
-                      <div className="card-text">
-                        <h4>{string.destination}</h4>
-                        <p>{string.story}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
+            {guitarStringsData.map((string, idx) => {
+              const contentIndex = stringContentIndex[idx] || 0;
+              const currentContent = string.content[contentIndex];
+              
+              return (
+                <div 
+                  key={idx} 
+                  className="string-wrapper"
+                  onClick={() => handleStringClick(idx)}
+                >
+                  <div className="note-name">{string.note}</div>
+                  <motion.div 
+                    className="string-line"
+                    animate={{ 
+                      scaleY: activeString === idx ? [1, 1.5, 1] : 1,
+                      boxShadow: activeString === idx ? `0 0 15px ${string.color}` : "none"
+                    }}
+                    transition={{ repeat: activeString === idx ? Infinity : 0, duration: 0.2 }}
+                    style={{ backgroundColor: string.color, height: `${1 + idx * 0.5}px` }}
+                  />
+                  
+                  <AnimatePresence mode="wait">
+                    {activeString === idx && (
+                      <motion.div 
+                        key={contentIndex}
+                        className="floating-card"
+                        initial={{ opacity: 0, x: 20, scale: 0.9 }}
+                        animate={{ opacity: 1, x: 50, scale: 1 }}
+                        exit={{ opacity: 0, x: 20, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <span className="card-icon">{currentContent.icon}</span>
+                        <div className="card-text">
+                          <h4>{currentContent.destination}</h4>
+                          <p>{currentContent.story}</p>
+                          <div className="content-indicator">
+                            {contentIndex + 1} / {string.content.length}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -145,16 +290,20 @@ const HobbyBlog = () => {
         <div className="piano-instrument">
           <div className="instrument-header">
             <span className="label">KEYS_OF_CURIOSITY</span>
+            <span className="hint">Auto-playing in C major scale</span>
           </div>
 
           <div className="keyboard">
-            {pianoKeys.map((key, idx) => (
+            {pianoKeysData.map((key, idx) => (
               <motion.div
                 key={idx}
-                className={`key ${key.type}`}
+                className={`key ${key.type} ${activeKey === idx ? 'active' : ''}`}
                 whileHover={{ y: 5 }}
-                onMouseEnter={() => setActiveKey(idx)}
-                onMouseLeave={() => setActiveKey(null)}
+                animate={{ 
+                  y: activeKey === idx ? 5 : 0,
+                  scale: activeKey === idx ? 0.95 : 1
+                }}
+                transition={{ duration: 0.1 }}
               >
                 {key.type === 'white' && <span className="key-icon">{key.icon}</span>}
                 <div className="key-note">{key.note}</div>
@@ -164,19 +313,28 @@ const HobbyBlog = () => {
 
           <div className="piano-display">
             <AnimatePresence mode="wait">
-              {activeKey !== null ? (
-                <motion.div 
-                  key={activeKey}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="display-content"
-                >
-                  <span className="topic-icon">{pianoKeys[activeKey].icon}</span>
-                  <h3>{pianoKeys[activeKey].topic}</h3>
-                  <div className="meta">TYPE: HOBBY_LOG // FREQ: {pianoKeys[activeKey].note}</div>
-                </motion.div>
-              ) : (
+              {activeKey !== null ? (() => {
+                const contentIndex = keyContentIndex[activeKey] || 0;
+                const currentContent = pianoKeysData[activeKey].content[contentIndex];
+                
+                return (
+                  <motion.div 
+                    key={`${activeKey}-${contentIndex}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="display-content"
+                  >
+                    <span className="topic-icon">{pianoKeysData[activeKey].icon}</span>
+                    <h3>{currentContent.topic}</h3>
+                    <p className="topic-description">{currentContent.description}</p>
+                    <div className="meta">
+                      TYPE: HOBBY_LOG // FREQ: {pianoKeysData[activeKey].note} // 
+                      CONTENT: {contentIndex + 1}/{pianoKeysData[activeKey].content.length}
+                    </div>
+                  </motion.div>
+                );
+              })() : (
                 <div className="display-idle">SELECT_A_KEY_TO_DECRYPT_STORY</div>
               )}
             </AnimatePresence>
