@@ -31,12 +31,13 @@ function App() {
       <section id="Projects">
         <Projects />
       </section>
-      <section id="Contact">
-        <Contact />
-      </section>
       <section id="Hobby">
         <HobbyBlog />
       </section>
+      <section id="Contact">
+        <Contact />
+      </section>
+      
     </ThemeProvider>
   );
 }

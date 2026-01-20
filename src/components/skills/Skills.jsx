@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaPython, FaReact, FaDatabase, FaBrain } from "react-icons/fa";
+import { FaPython, FaReact, FaDatabase } from "react-icons/fa";
 import { SiDjango, SiTailwindcss, SiJavascript } from "react-icons/si";
 import { motion } from "framer-motion";
 import "./skills.scss";
@@ -48,7 +48,7 @@ const Skills = () => {
     <section className="skill-processor">
       {/* Section Header */}
       <div className="section-title">
-        <h2 data-text="NEURAL_ENGINE">NEURAL_ENGINE</h2>
+        <h2 data-text="NEURAL_ENGINE">NEURAL_ENGIN</h2>
         <div className="subtitle">SYSTEM_CAPABILITIES_REPORT.LOG</div>
       </div>
 
@@ -83,18 +83,8 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* CENTER: BRAIN & TERMINAL */}
-        <div className="brain-section">
-          <div className="brain-container">
-            <div className="brain-shell">
-              <FaBrain className="brain-icon" style={{ 
-                color: skills[activeIdx].color,
-                filter: `drop-shadow(0 0 20px ${skills[activeIdx].color}80)` 
-              }} />
-            </div>
-            <div className="core-glow" style={{ background: skills[activeIdx].color }}></div>
-          </div>
-
+        {/* CENTER: TERMINAL */}
+        <div className="terminal-section">
           <div className="mini-terminal">
             <div className="term-header">
               <div className="term-dots"><span/><span/><span/></div>

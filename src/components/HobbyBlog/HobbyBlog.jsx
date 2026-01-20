@@ -4,19 +4,19 @@ import { BookOpen, Calendar, ArrowRight, Tag, Music, Hash, Clock } from 'lucide-
 import "./HobbyBlog.scss";
 
 const pianoKeysData = [
-  { note: 'C', sargam: 'Sa', type: 'white', icon: '☕', content: { topic: 'Morning Rituals', description: 'Starting the day with intention and mindful coffee.' }},
+  { note: 'C', sargam: '', type: 'white', icon: '☕', content: { topic: 'Morning Rituals', description: 'Starting the day with intention and mindful coffee.' }},
   { note: 'C#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'D', sargam: 'Re', type: 'white', icon: '💻', content: { topic: 'Coding Sessions', description: 'Late night debugging and creative problem solving.' }},
+  { note: 'D', sargam: '', type: 'white', icon: '💻', content: { topic: 'Coding Sessions', description: 'Late night debugging and creative problem solving.' }},
   { note: 'D#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'E', sargam: 'Ga', type: 'white', icon: '🎸', content: { topic: 'Guitar Practice', description: 'Strings and melodies, expressing emotions through music.' }},
-  { note: 'F', sargam: 'Ma', type: 'white', icon: '📷', content: { topic: 'Photography', description: 'Capturing fleeting moments and urban landscapes.' }},
+  { note: 'E', sargam: '', type: 'white', icon: '🎸', content: { topic: 'Guitar Practice', description: 'Strings and melodies, expressing emotions through music.' }},
+  { note: 'F', sargam: '', type: 'white', icon: '📷', content: { topic: 'Photography', description: 'Capturing fleeting moments and urban landscapes.' }},
   { note: 'F#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'G', sargam: 'Pa', type: 'white', icon: '🏃', content: { topic: 'Running', description: 'Miles of freedom on mountain trails and city streets.' }},
+  { note: 'G', sargam: '', type: 'white', icon: '🏃', content: { topic: 'Running', description: 'Miles of freedom on mountain trails and city streets.' }},
   { note: 'G#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'A', sargam: 'Dha', type: 'white', icon: '🍳', content: { topic: 'Cooking', description: 'Experimenting with flavors from around the world.' }},
+  { note: 'A', sargam: '', type: 'white', icon: '🍳', content: { topic: 'Cooking', description: 'Experimenting with flavors from around the world.' }},
   { note: 'A#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'B', sargam: 'Ni', type: 'white', icon: '📚', content: { topic: 'Reading', description: 'Exploring new worlds through literature and philosophy.' }},
-  { note: 'C\'', sargam: 'Sa\'', type: 'white', icon: '🧘', content: { topic: 'Meditation', description: 'Finding stillness and clarity in the chaos.' }},
+  { note: 'B', sargam: '', type: 'white', icon: '📚', content: { topic: 'Reading', description: 'Exploring new worlds through literature and philosophy.' }},
+  { note: 'C\'', sargam: '', type: 'white', icon: '🧘', content: { topic: 'Meditation', description: 'Finding stillness and clarity in the chaos.' }},
 ];
 
 const autoPlayPattern = [0, 2, 4, 5, 7, 9, 11, 12]; // Sa Re Ga Ma Pa Dha Ni Sa

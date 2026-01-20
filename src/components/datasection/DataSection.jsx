@@ -1,255 +1,151 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import "./DataSection.scss";
-import { motion, useScroll, useTransform } from 'framer-motion';
 
-const Parallax = ({ type }) => {
-  const ref = useRef();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [terminalText, setTerminalText] = useState('');
+const DataSection = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, margin: "-10% 0px" });
   
+  // 1. Perspective Tilt Logic
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-300, 300], [5, -5]), { stiffness: 100, damping: 30 });
+  const rotateY = useSpring(useTransform(mouseX, [-300, 300], [-5, 5]), { stiffness: 100, damping: 30 });
+
+  function handleMouseMove(e) {
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  }
+
+  // 2. Advanced Parallax
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
+    target: containerRef,
+    offset: ["start end", "end start"]
   });
 
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacityText = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const pathLength = useSpring(useTransform(scrollYProgress, [0.2, 0.8], [0, 1]), { stiffness: 50 });
+  const contentY = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
-  // Mouse parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      setMousePos({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Terminal typing effect
-  useEffect(() => {
-    const text = type === 'aboutme' 
-      ? '$ ./initialize_profile.sh' 
-      : '$ git clone portfolio.git';
-    
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index <= text.length) {
-        setTerminalText(text.slice(0, index));
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [type]);
-
-  // Floating code particles
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: 10 + Math.random() * 10,
-  }));
-
-  const codeSymbols = ['{', '}', '<', '>', '/', '(', ')', ';', '[', ']', '=', '+'];
+  const stats = [
+    { label: "Logic", value: "Scalable Systems", pct: "92%" },
+    { label: "Interface", value: "High-Fidelity UI", pct: "88%" },
+    { label: "Engine", value: "Node / React / TS", pct: "95%" }
+  ];
 
   return (
-    <div ref={ref} className='parallax'>
-      {/* Animated Grid Background */}
-      <div className="grid-container">
-        <motion.div 
-          className="grid-lines"
-          style={{ 
-            x: mousePos.x * 0.5,
-            y: mousePos.y * 0.5
-          }}
-        />
+    <section 
+      className="about-blueprint" 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+    >
+      {/* BACKGROUND SVG DECORATION */}
+      <div className="svg-overlay">
+        <svg width="100%" height="100%" preserveAspectRatio="none">
+          <motion.path
+            d="M 50,100 L 150,100 L 150,500 L 300,500"
+            fill="none"
+            stroke="var(--accent-color)"
+            strokeWidth="0.5"
+            style={{ pathLength, opacity: 0.3 }}
+          />
+        </svg>
       </div>
 
-      {/* Floating Code Particles */}
-      <div className="code-particles">
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="particle"
-            initial={{ 
-              x: `${particle.x}vw`, 
-              y: `${particle.y}vh`,
-              opacity: 0 
-            }}
-            animate={{ 
-              y: [`${particle.y}vh`, `${particle.y - 30}vh`],
-              opacity: [0, 0.6, 0]
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
-              ease: "linear"
-            }}
-          >
-            {codeSymbols[particle.id % codeSymbols.length]}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Glowing Orbs */}
       <motion.div 
-        className="glow-orb orb-1"
-        style={{
-          x: mousePos.x * -1,
-          y: mousePos.y * -1
-        }}
-      />
-      <motion.div 
-        className="glow-orb orb-2"
-        style={{
-          x: mousePos.x * 1.5,
-          y: mousePos.y * 1.5
-        }}
-      />
-
-      {/* Main Content */}
-      <motion.div 
-        style={{ y: yText, opacity: opacityText, scale }} 
-        className="content-wrapper"
+        className="tilt-wrapper"
+        style={{ rotateX, rotateY, y: contentY }}
       >
-        {/* Terminal Header */}
-        <div className="terminal-header">
-          <div className="terminal-dots">
-            <span className="dot red"></span>
-            <span className="dot yellow"></span>
-            <span className="dot green"></span>
+        <div className="content-inner">
+          {/* TECHNICAL HEADER */}
+          <div className="meta-container">
+            <div className="scanner-line" />
+            <div className="meta-header">
+              <span className="code-text">ARCH_TYPE: FULL_STACK</span>
+              <div className="line-grow" />
+              <span className="code-text">LOC: 27.71N_85.32E</span>
+            </div>
           </div>
-          <div className="terminal-title">~/ashish/portfolio</div>
+
+          <div className="main-layout">
+            {/* LEFT: CONTENT */}
+            <div className="content-col">
+              <motion.div 
+                className="tag"
+                animate={isInView ? { opacity: [0.4, 1, 0.4] } : {}}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                // DATA_SPEC_V2.06
+              </motion.div>
+              
+              <motion.h2 
+                initial={{ x: -50, opacity: 0 }}
+                animate={isInView ? { x: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.8, ease: "circOut" }}
+              >
+                Engineering <span className="outline">Digital</span> <br/>
+                <span className="filled">Ecosystems</span>
+              </motion.h2>
+
+              <motion.p 
+                className="description"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.4 }}
+              >
+                I don't just build websites; I architect high-performance 
+                digital environments. My workflow merges <strong>algorithmic efficiency</strong> 
+                with intuitive human-centric design.
+              </motion.p>
+            </div>
+
+            {/* RIGHT: INTERACTIVE SPECS */}
+            <div className="specs-col">
+              {stats.map((stat, i) => (
+                <motion.div 
+                  key={i} 
+                  className="stat-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6 + i * 0.15 }}
+                  whileHover={{ x: 10, backgroundColor: "rgba(100, 255, 218, 0.05)" }}
+                >
+                  <div className="stat-info">
+                    <span className="label">{stat.label}</span>
+                    <span className="pct">{stat.pct}</span>
+                  </div>
+                  <div className="stat-value">{stat.value}</div>
+                  <div className="bar-bg">
+                    <motion.div 
+                      className="bar-fill" 
+                      initial={{ width: 0 }}
+                      animate={isInView ? { width: stat.pct } : {}}
+                      transition={{ duration: 1.5, delay: 1, ease: "anticipate" }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* FLOATING HUD ELEMENT */}
+              <motion.div 
+                className="hud-module"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="circle-loader" />
+                <div className="hud-data">
+                  <span>SYSTEM_STABLE</span>
+                  <span className="blink">● LIVE_NODE</span>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
-
-        {/* Terminal Command */}
-        <motion.div 
-          className="terminal-command"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          {terminalText}<span className="cursor">_</span>
-        </motion.div>
-
-        {/* Section Label */}
-        <motion.span 
-          className="section-label"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          01 // EXECUTE
-        </motion.span>
-
-        {/* Main Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-        >
-          {type === 'aboutme' ? (
-            <>
-              IDENTIFY<span className="accent-text">_SELF</span>
-            </>
-          ) : (
-            <>
-              PORTFOLIO<span className="accent-text">_BIN</span>
-            </>
-          )}
-        </motion.h1>
-
-        {/* Description */}
-        <motion.div 
-          className="title"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
-        >
-          <p>
-            {type === 'aboutme' 
-              ? "Bridging the gap between Computer Engineering principles and creative web architecture. Focused on high-fidelity user interfaces and system efficiency."
-              : "A curated collection of digital builds, ranging from full-stack architectures to experimental frontend components."
-            }
-          </p>
-        </motion.div>
-
-        {/* Stats Bar */}
-        <motion.div 
-          className="stats-bar"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1 }}
-        >
-          {type === 'aboutme' ? (
-            <>
-              <div className="stat">
-                <span className="stat-value">4+</span>
-                <span className="stat-label">Years Coding</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat">
-                <span className="stat-value">50+</span>
-                <span className="stat-label">Projects Built</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat">
-                <span className="stat-value">∞</span>
-                <span className="stat-label">Learning Mode</span>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="stat">
-                <span className="stat-value">FULL-STACK</span>
-                <span className="stat-label">Architecture</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat">
-                <span className="stat-value">UI/UX</span>
-                <span className="stat-label">Design</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat">
-                <span className="stat-value">MODERN</span>
-                <span className="stat-label">Tech Stack</span>
-              </div>
-            </>
-          )}
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="scroll-indicator"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="mouse">
-            <div className="wheel"></div>
-          </div>
-          <span>Scroll to explore</span>
-        </motion.div>
       </motion.div>
-
-      {/* Animated Background Elements */}
-      <motion.div className="parallax-stars" style={{ y: yBg }} />
-      <motion.div 
-        className="parallax-planets" 
-        style={{ 
-          y: yBg,
-          rotateX: scrollYProgress
-        }} 
-      />
-    </div>
+    </section>
   );
-}
+};
 
-export default Parallax;
+export default DataSection;
