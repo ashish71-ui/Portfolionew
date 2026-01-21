@@ -4,14 +4,20 @@ $font-mono: 'JetBrains Mono', monospace;
   min-height: 100vh;
   background-color: var(--bg-section-6);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   font-family: $font-mono;
   padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 40px);
   transition: background-color 0.5s ease;
   margin-top: clamp(60px, 10vh, 80px);
+
+  @media (max-width: 640px) {
+    min-height: auto;
+    padding: clamp(30px, 5vw, 50px) clamp(15px, 3vw, 25px);
+  }
 
   .contact-bg-text {
     position: absolute;
@@ -39,10 +45,10 @@ $font-mono: 'JetBrains Mono', monospace;
     box-shadow: 0 20px 50px var(--shadow-color);
     transition: all 0.3s ease;
     overflow: hidden;
+    backdrop-filter: blur(8px);
 
     @media (max-width: 1024px) {
       grid-template-columns: 1fr;
-      max-width: 95%;
     }
 
     @media (max-width: 900px) {
@@ -50,17 +56,25 @@ $font-mono: 'JetBrains Mono', monospace;
     }
 
     @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      max-width: 100%;
       border-radius: 8px;
       box-shadow: 0 10px 30px var(--shadow-color);
+      flex-direction: column;
     }
 
     .contact-details {
       padding: clamp(25px, 4vw, 50px);
       border-right: 1px solid var(--border-accent);
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
 
       @media (max-width: 640px) {
-        padding: clamp(18px, 3vw, 30px);
+        padding: clamp(20px, 3vw, 30px);
+        border-right: none;
+        border-bottom: 1px solid var(--border-accent);
+        order: 1;
       }
 
       @media (max-width: 900px) {
@@ -107,6 +121,14 @@ $font-mono: 'JetBrains Mono', monospace;
           align-items: center;
           gap: clamp(12px, 2vw, 18px);
           transition: all 0.3s ease;
+          padding: clamp(14px, 2vw, 18px);
+          border: 1px solid var(--border-color);
+          border-radius: 12px;
+          background: var(--bg-card-light);
+
+          @media (max-width: 640px) {
+            gap: clamp(10px, 2vw, 15px);
+          }
 
           &:hover {
             transform: translateX(5px);
@@ -188,9 +210,12 @@ $font-mono: 'JetBrains Mono', monospace;
       padding: clamp(25px, 4vw, 50px);
       background: var(--bg-card-light);
       transition: background 0.3s ease;
+      display: flex;
+      flex-direction: column;
 
       @media (max-width: 640px) {
-        padding: clamp(18px, 3vw, 30px);
+        padding: clamp(20px, 3vw, 30px);
+        order: 2;
       }
 
       .form-header {
@@ -219,17 +244,19 @@ $font-mono: 'JetBrains Mono', monospace;
         display: flex;
         flex-direction: column;
         gap: clamp(20px, 3vw, 35px);
+        width: 100%;
 
         .input-group {
           position: relative;
+          width: 100%;
 
           input,
           textarea {
             width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid var(--border-accent);
-            padding: clamp(8px, 1.2vw, 12px) 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: clamp(10px, 1.4vw, 14px) clamp(12px, 2vw, 16px);
+            border-radius: 10px;
             color: var(--text-primary);
             font-family: $font-mono;
             font-size: clamp(0.85rem, 1.3vw, 1rem);
@@ -243,7 +270,8 @@ $font-mono: 'JetBrains Mono', monospace;
 
             &:focus {
               outline: none;
-              border-bottom-color: var(--accent-color);
+              border-color: var(--accent-color);
+              box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
 
               & ~ .input-focus-line {
                 width: 100%;
@@ -253,7 +281,7 @@ $font-mono: 'JetBrains Mono', monospace;
 
           textarea {
             min-height: clamp(80px, 12vw, 120px);
-            padding: clamp(8px, 1.2vw, 12px) 0;
+            padding: clamp(10px, 1.4vw, 14px) clamp(12px, 2vw, 16px);
           }
 
           .input-focus-line {
@@ -300,25 +328,39 @@ $font-mono: 'JetBrains Mono', monospace;
   }
 
   .footer-bar {
-    position: absolute;
-    bottom: clamp(15px, 2.5vw, 25px);
+    position: static;
+    bottom: auto;
     width: 100%;
-    padding: 0 clamp(20px, 4vw, 40px);
+    padding: clamp(20px, 3vw, 40px) clamp(20px, 4vw, 40px);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: clamp(8px, 1.2vw, 10px);
     color: var(--text-tertiary);
-    opacity: 0.4;
+    opacity: 0.6;
     letter-spacing: 1px;
     transition: all 0.3s ease;
     flex-wrap: wrap;
-    gap: clamp(10px, 2vw, 15px);
+    gap: clamp(15px, 2vw, 25px);
+    border-top: 1px solid var(--border-accent);
+    margin-top: clamp(30px, 5vw, 50px);
+    text-align: center;
 
-    @media (max-width: 600px) {
-      position: static;
-      margin-top: clamp(20px, 3vw, 30px);
+    span {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    @media (max-width: 768px) {
       flex-direction: column;
+      gap: clamp(10px, 2vw, 15px);
       text-align: center;
+      padding: clamp(15px, 2.5vw, 25px);
+      margin-top: clamp(20px, 3vw, 30px);
+
+      span {
+        flex: 1 1 100%;
+      }
     }
   }
 }
@@ -377,45 +419,225 @@ $font-mono: 'JetBrains Mono', monospace;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .contact-section {
-    padding: 15px 10px;
+    min-height: auto;
+    padding: clamp(20px, 5vw, 40px) clamp(15px, 3vw, 25px);
+    margin-top: clamp(40px, 5vw, 60px);
     
     .contact-bg-text {
-      font-size: 20vw;
+      font-size: 15vw;
+      opacity: 0.03;
     }
     
     .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px var(--shadow-color);
+      padding: 0;
+
       .contact-details {
-        padding: 20px;
-        
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-accent);
+        padding: clamp(18px, 4vw, 28px);
+        order: 1;
+
         .glitch-text {
-          font-size: 1.5rem;
+          font-size: clamp(1.3rem, 5vw, 1.8rem);
+          margin-bottom: clamp(12px, 2vw, 20px);
         }
-        
+
         .summary {
-          font-size: 0.85rem;
+          font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+          margin-bottom: clamp(20px, 3vw, 30px);
         }
-        
-        .info-item {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
+
+        .info-list {
+          gap: clamp(15px, 2.5vw, 25px);
+
+          .info-item {
+            gap: clamp(10px, 2vw, 14px);
+            flex-direction: row;
+            align-items: flex-start;
+
+            .icon-circle {
+              width: clamp(32px, 5vw, 42px);
+              height: clamp(32px, 5vw, 42px);
+              min-width: clamp(32px, 5vw, 42px);
+              font-size: clamp(1rem, 1.8vw, 1.3rem);
+            }
+
+            .text {
+              label {
+                font-size: clamp(7px, 1vw, 10px);
+              }
+
+              span {
+                font-size: clamp(0.85rem, 1.3vw, 1rem);
+              }
+            }
+          }
+        }
+
+        .social-links {
+          margin-top: clamp(20px, 4vw, 40px);
+          gap: clamp(10px, 2vw, 15px);
+
+          a {
+            width: clamp(32px, 5vw, 42px);
+            height: clamp(32px, 5vw, 42px);
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+          }
         }
       }
-      
+
       .contact-form-container {
-        padding: 20px;
-        
+        width: 100%;
+        border-left: none;
+        padding: clamp(18px, 4vw, 28px);
+        background: var(--bg-card-light);
+        order: 2;
+
+        .form-header {
+          font-size: clamp(8px, 1.2vw, 10px);
+          margin-bottom: clamp(15px, 2.5vw, 30px);
+        }
+
         .contact-form {
-          gap: 20px;
+          gap: clamp(15px, 2.5vw, 25px);
+
+          .input-group {
+            input,
+            textarea {
+              font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+              padding: clamp(6px, 1vw, 10px) 0;
+            }
+
+            textarea {
+              min-height: clamp(70px, 10vw, 100px);
+            }
+          }
+
+          .submit-btn {
+            padding: clamp(10px, 1.2vw, 14px) clamp(16px, 2.5vw, 24px);
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+            gap: clamp(8px, 1.5vw, 12px);
+            margin-top: clamp(8px, 1.2vw, 15px);
+          }
         }
       }
     }
-    
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: clamp(15px, 4vw, 25px) clamp(12px, 2vw, 20px);
+    margin-top: clamp(30px, 4vw, 50px);
+
+    .contact-bg-text {
+      font-size: 12vw;
+    }
+
+    .contact-wrapper {
+      .contact-details {
+        padding: clamp(15px, 3vw, 22px);
+        
+        .terminal-header {
+          font-size: clamp(8px, 1.2vw, 10px);
+          margin-bottom: clamp(12px, 2vw, 20px);
+        }
+
+        .glitch-text {
+          font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+        }
+
+        .summary {
+          font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+          line-height: 1.6;
+          margin-bottom: clamp(15px, 2.5vw, 25px);
+        }
+
+        .info-list {
+          gap: clamp(12px, 2vw, 18px);
+
+          .info-item {
+            gap: clamp(8px, 1.5vw, 12px);
+
+            .icon-circle {
+              width: clamp(30px, 4.5vw, 38px);
+              height: clamp(30px, 4.5vw, 38px);
+              min-width: clamp(30px, 4.5vw, 38px);
+              font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+            }
+
+            .text {
+              label {
+                font-size: clamp(6px, 0.9vw, 9px);
+                margin-bottom: 2px;
+              }
+
+              span {
+                font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+              }
+            }
+          }
+        }
+
+        .social-links {
+          margin-top: clamp(15px, 3vw, 30px);
+          gap: clamp(8px, 1.5vw, 12px);
+
+          a {
+            width: clamp(30px, 4.5vw, 38px);
+            height: clamp(30px, 4.5vw, 38px);
+            font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+          }
+        }
+      }
+
+      .contact-form-container {
+        padding: clamp(15px, 3vw, 22px);
+
+        .form-header {
+          font-size: clamp(7px, 1vw, 9px);
+          margin-bottom: clamp(12px, 2vw, 20px);
+        }
+
+        .contact-form {
+          gap: clamp(12px, 2vw, 20px);
+
+          .input-group {
+            input,
+            textarea {
+              font-size: clamp(0.75rem, 1vw, 0.9rem);
+              padding: clamp(5px, 0.8vw, 8px) 0;
+            }
+
+            textarea {
+              min-height: clamp(60px, 8vw, 90px);
+            }
+          }
+
+          .submit-btn {
+            padding: clamp(8px, 1vw, 12px) clamp(14px, 2vw, 20px);
+            font-size: clamp(0.75rem, 1vw, 0.9rem);
+            gap: clamp(6px, 1.2vw, 10px);
+            margin-top: clamp(6px, 1vw, 12px);
+          }
+        }
+      }
+    }
+
     .footer-bar {
-      padding: 0 20px;
-      font-size: 9px;
+      padding: 0;
+      font-size: clamp(7px, 1vw, 9px);
+      margin-top: clamp(15px, 2.5vw, 25px);
+      padding-top: clamp(12px, 2vw, 18px);
     }
   }
 }

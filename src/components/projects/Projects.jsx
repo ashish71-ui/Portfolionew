@@ -56,6 +56,12 @@ const Projects = () => {
 
   return (
     <div className="projects-section">
+      <div className="projects-header">
+        <h2 className="projects-title">PROJECTS // SHIPPED_TO_PROD</h2>
+        <p className="projects-subtitle">
+          A curated set of builds — clean UI, real functionality, and deploy-ready polish.
+        </p>
+      </div>
       <div className="ide-container">
         {/* TOP BAR */}
         <div className="ide-top">

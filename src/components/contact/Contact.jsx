@@ -92,11 +92,6 @@ const Contact = () => {
           </form>
         </div>
       </motion.div>
-
-      <div className="footer-bar">
-        <span>© 2024 Aashish Dhakal // All Rights Reserved</span>
-        <span>STATUS: ONLINE</span>
-      </div>
     </div>
   );
 };

@@ -75,6 +75,14 @@ $font-mono: 'JetBrains Mono', monospace;
     }
   }
 
+  .stream-section {
+    animation: slide-in-left 0.7s ease-out;
+
+    &:nth-of-type(3) {
+      animation: slide-in-right 0.7s ease-out;
+    }
+  }
+
   .stream-header {
     display: flex;
     align-items: center;
@@ -82,9 +90,25 @@ $font-mono: 'JetBrains Mono', monospace;
     font-size: clamp(10px, 2vw, 12px);
     color: var(--text-tertiary);
     margin-bottom: clamp(25px, 5vw, 40px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 12px;
-    transition: color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    &:hover {
+      color: var(--accent-color);
+      border-bottom-color: var(--accent-color);
+      gap: 16px;
+    }
+
+    svg {
+      transition: all 0.3s ease;
+    }
+
+    &:hover svg {
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
   }
 
   .nodes-container {
@@ -97,6 +121,31 @@ $font-mono: 'JetBrains Mono', monospace;
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
+    animation: slide-in-left 0.6s ease-out backwards;
+
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    &:hover {
+      transform: translateX(8px);
+
+      .node-main {
+        border-top-color: var(--accent-color);
+      }
+
+      .node-id {
+        animation: pulse-glow 1.5s ease-in-out infinite;
+      }
+    }
 
     &.dim {
       opacity: 0.3;
@@ -108,19 +157,21 @@ $font-mono: 'JetBrains Mono', monospace;
       align-items: flex-start;
       gap: clamp(15px, 3vw, 25px);
       padding: clamp(15px, 3vw, 25px) 0;
-      border-top: 1px solid var(--border-color);
+      border-top: 2px solid var(--border-color);
       position: relative;
       z-index: 2;
-      transition: border-color 0.3s ease;
+      transition: all 0.3s ease;
 
       &:hover {
         .node-id {
           color: var(--accent-color);
           border-color: var(--accent-color);
+          background: rgba(100, 255, 218, 0.08);
         }
 
         h3 {
           color: var(--accent-color);
+          text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
         }
       }
     }
@@ -128,11 +179,14 @@ $font-mono: 'JetBrains Mono', monospace;
     .node-id {
       font-size: clamp(8px, 1.5vw, 10px);
       padding: 6px 12px;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       color: var(--text-tertiary);
       transition: all 0.3s ease;
       white-space: nowrap;
       flex-shrink: 0;
+      background: rgba(100, 255, 218, 0.02);
+      border-radius: 4px;
+      font-weight: 600;
     }
 
     .node-content {
@@ -151,6 +205,7 @@ $font-mono: 'JetBrains Mono', monospace;
         font-size: clamp(1.1rem, 3vw, 1.4rem);
         transition: all 0.3s ease;
         color: var(--text-primary);
+        font-weight: 700;
       }
 
       .inst {
@@ -161,11 +216,28 @@ $font-mono: 'JetBrains Mono', monospace;
       }
     }
 
+    .node-action {
+      color: var(--accent-color);
+      transition: all 0.3s ease;
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover .node-action {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
     .node-details {
       overflow: hidden;
 
       .details-inner {
         padding: clamp(15px, 3vw, 20px) 0 clamp(15px, 3vw, 20px) clamp(50px, 8vw, 80px);
+        border-left: 2px solid rgba(100, 255, 218, 0.4);
+        background: rgba(100, 255, 218, 0.03);
+        margin: 10px 0 0 clamp(10px, 2vw, 20px);
 
         .detail-line {
           display: flex;
@@ -174,11 +246,23 @@ $font-mono: 'JetBrains Mono', monospace;
           font-size: clamp(11px, 2vw, 13px);
           color: var(--text-tertiary);
           margin-bottom: 10px;
-          transition: color 0.3s ease;
+          transition: all 0.3s ease;
+          animation: slide-in-left 0.4s ease-out;
 
           .accent {
             color: var(--accent-color);
             transition: color 0.3s ease;
+            animation: pulse-glow 2s ease-in-out infinite;
+          }
+
+          &:hover {
+            color: var(--text-primary);
+            transform: translateX(5px);
+
+            .accent {
+              color: var(--accent-color);
+              text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+            }
           }
         }
       }
@@ -189,15 +273,17 @@ $font-mono: 'JetBrains Mono', monospace;
       left: -20px;
       top: 50%;
       width: 10px;
-      height: 1px;
-      background: var(--accent-color);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
       opacity: 0;
       transition: all 0.3s ease;
+      border-radius: 1px;
     }
 
     &:hover .node-wire {
       opacity: 1;
       left: -10px;
+      box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
     }
   }
 
@@ -210,13 +296,37 @@ $font-mono: 'JetBrains Mono', monospace;
     .line {
       width: 1px;
       flex: 1;
-      background: var(--border-color);
+      background: linear-gradient(180deg, transparent, var(--border-color), transparent);
       transition: background 0.3s ease;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -2px;
+        width: 5px;
+        height: 20%;
+        background: linear-gradient(180deg, var(--accent-color), transparent);
+        animation: float-up 3s ease-in-out infinite;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -2px;
+        width: 5px;
+        height: 20%;
+        background: linear-gradient(180deg, transparent, var(--accent-color));
+        animation: float-up 3s ease-in-out infinite 1.5s;
+      }
     }
 
     .icon {
       color: var(--border-color);
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      animation: pulse-glow 3s ease-in-out infinite;
     }
 
     @media (max-width: 900px) {
@@ -252,6 +362,66 @@ $font-mono: 'JetBrains Mono', monospace;
   }
   100% {
     clip: rect(48px, 9999px, 50px, 0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--accent-color), 0 0 20px rgba(100, 255, 218, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--accent-color), 0 0 40px rgba(100, 255, 218, 0.5);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    border-color: var(--border-color);
+    box-shadow: 0 0 5px transparent;
+  }
+  50% {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+  }
+}
+
+@keyframes float-up {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
   }
 }
 

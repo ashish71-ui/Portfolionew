@@ -29,11 +29,12 @@ const DataSection = () => {
   const pathLength = useSpring(useTransform(scrollYProgress, [0.2, 0.8], [0, 1]), { stiffness: 50 });
   const contentY = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
-  const stats = [
-    { label: "Logic", value: "Scalable Systems", pct: "92%" },
-    { label: "Interface", value: "High-Fidelity UI", pct: "88%" },
-    { label: "Engine", value: "Node / React / TS", pct: "95%" }
-  ];
+ const stats = [
+  { label: "Energy Source", value: "Music × Code", pct: "100%" },
+  { label: "Thinking Style", value: "Logical yet Creative", pct: "94%" },
+  { label: "What Drives Me", value: "Turning Ideas Into Reality", pct: "98%" }
+];
+
 
   return (
     <section 
@@ -99,7 +100,27 @@ const DataSection = () => {
                 digital environments. My workflow merges <strong>algorithmic efficiency</strong> 
                 with intuitive human-centric design.
               </motion.p>
+              <motion.div
+                className="left-extra"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.6 }}
+              >
+                <div className="mini-block">
+                  <span className="mini-label">MODE</span>
+                  <span className="mini-value">BUILD • LEARN • EVOLVE</span>
+                </div>
+                <div className="mini-block">
+                  <span className="mini-label">FOCUS</span>
+                  <span className="mini-value">Data, Design & Systems</span>
+                </div>
+                <div className="mini-block">
+                  <span className="mini-label">STATUS</span>
+                  <span className="mini-value">Always Improving</span>
+                </div>
+              </motion.div>
             </div>
+            
 
             {/* RIGHT: INTERACTIVE SPECS */}
             <div className="specs-col">

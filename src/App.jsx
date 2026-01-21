@@ -7,6 +7,7 @@ import Projects from "./components/projects/Projects";
 import Contact from "./components/contact/Contact";
 import DataSection from "./components/datasection/DataSection";
 import HobbyBlog from "./components/HobbyBlog/HobbyBlog";
+import Footer from "./components/footer/Footer";
 import { ThemeProvider } from "./context/ThemeContext";
 
 import "./app.scss";
@@ -37,6 +38,8 @@ function App() {
       <section id="Contact">
         <Contact />
       </section>
+
+      <Footer />
       
     </ThemeProvider>
   );

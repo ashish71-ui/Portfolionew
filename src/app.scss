@@ -86,6 +86,7 @@ a {
 section {
   scroll-snap-align: start;
   position: relative;
+  transition: background-color 0.5s ease, color 0.3s ease;
   // Smooth transition indicator between sections
   &::before {
     content: '';
@@ -102,6 +103,15 @@ section {
     opacity: 0.15;
     pointer-events: none;
     z-index: 1;
+  }
+}
+
+// Make theme switching feel smoother across components
+body {
+  * {
+    transition-property: background-color, color, border-color, box-shadow, opacity, transform;
+    transition-duration: 0.45s;
+    transition-timing-function: ease;
   }
 }
 
