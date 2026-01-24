@@ -99,6 +99,124 @@
         }
       }
 
+      .cta-buttons {
+        display: flex;
+        gap: clamp(15px, 3vw, 25px);
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: clamp(30px, 4vw, 50px);
+
+        @media (max-width: 992px) {
+          justify-content: center;
+        }
+
+        .btn-primary-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: transparent;
+          color: var(--accent-neon);
+          padding: clamp(12px, 1.5vw, 16px) clamp(24px, 3vw, 32px);
+          text-decoration: none;
+          font-family: 'Fira Code';
+          font-size: clamp(11px, 1.4vw, 13px);
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          border-radius: 8px;
+          border: 1.5px solid var(--accent-neon);
+          position: relative;
+          transition: all 0.35s ease;
+          white-space: nowrap;
+          cursor: pointer;
+          overflow: hidden;
+
+          .btn-text {
+            position: relative;
+            z-index: 2;
+            transition: all 0.35s ease;
+          }
+
+          .btn-arrow {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.35s ease;
+            opacity: 0.7;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transition: left 0.35s ease;
+            z-index: 1;
+          }
+
+          &:hover {
+            border-color: var(--accent-neon);
+            background: rgba(100, 255, 218, 0.08);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.2), inset 0 0 15px rgba(100, 255, 218, 0.05);
+
+            .btn-text {
+              color: var(--accent-neon);
+            }
+
+            .btn-arrow {
+              transform: translateX(4px);
+              opacity: 1;
+            }
+
+            &::before {
+              left: 100%;
+            }
+          }
+
+          &:active {
+            transform: scale(0.98);
+          }
+        }
+
+        .btn-secondary-cta {
+          color: var(--text-secondary);
+          font-family: 'Fira Code';
+          font-size: clamp(11px, 1.4vw, 13px);
+          cursor: pointer;
+          transition: all 0.35s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: clamp(12px, 1.5vw, 16px) clamp(24px, 3vw, 32px);
+          border: 1.5px solid var(--border-light);
+          border-radius: 8px;
+          background: transparent;
+          text-decoration: none;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+
+          .arrow {
+            display: inline-block;
+            transition: transform 0.35s ease;
+            opacity: 0.6;
+          }
+
+          &:hover {
+            color: var(--accent-neon);
+            border-color: var(--accent-neon);
+            background: rgba(100, 255, 218, 0.06);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.15), inset 0 0 15px rgba(100, 255, 218, 0.03);
+
+            .arrow {
+              transform: translateY(3px);
+              opacity: 1;
+            }
+          }
+        }
+      }
+
       .cta-group {
         display: flex;
         gap: clamp(15px, 3vw, 30px);

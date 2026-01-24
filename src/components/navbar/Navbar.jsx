@@ -45,6 +45,17 @@ const Navbar = () => {
           ))}
         </ul>
 
+        {/* Download CV Button */}
+        <motion.a
+          href="/AshishDhakalCV.pdf"
+          download
+          className="btn-download-cv"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span>DOWNLOAD_CV</span>
+        </motion.a>
+
         {/* Theme Toggle */}
         <motion.button
           className="theme-toggle"
@@ -86,6 +97,20 @@ const Navbar = () => {
                   </Link>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+              >
+                <motion.a
+                  href="/AshishDhakalCV.pdf"
+                  download
+                  className="mobile-download-cv"
+                  onClick={() => setIsOpen(false)}
+                >
+                  📥 DOWNLOAD_CV
+                </motion.a>
+              </motion.li>
               <motion.li
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

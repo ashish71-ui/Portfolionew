@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
-        <span>© 2024 Aashish Dhakal // All Rights Reserved</span>
+        <span>© 2026 Aashish Dhakal // All Rights Reserved</span>
         <span>STATUS: ONLINE</span>
       </div>
     </footer>

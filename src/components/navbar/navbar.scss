@@ -108,6 +108,62 @@ $font-mono: 'Fira Code', 'JetBrains Mono', monospace;
       display: none;
     }
   }
+
+  .btn-download-cv {
+    display: none;
+    @media (min-width: 769px) {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: clamp(10px, 1.5vw, 12px) clamp(18px, 2.5vw, 24px);
+      background: transparent;
+      color: var(--accent-color);
+      border: 1.5px solid var(--accent-color);
+      border-radius: 8px;
+      font-family: $font-mono;
+      font-size: clamp(10px, 1.2vw, 11px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      margin-left: clamp(0.5rem, 1.5vw, 1.5rem);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(6, 182, 212, 0.08);
+        transition: left 0.35s ease;
+        z-index: 0;
+      }
+
+      span {
+        position: relative;
+        z-index: 1;
+      }
+
+      &:hover {
+        border-color: var(--accent-color);
+        background: rgba(6, 182, 212, 0.08);
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), inset 0 0 15px rgba(6, 182, 212, 0.05);
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
 }
 
 .hamburger {
@@ -206,6 +262,53 @@ $font-mono: 'Fira Code', 'JetBrains Mono', monospace;
         color: var(--accent-color);
         border-color: var(--accent-color);
         background: var(--border-accent);
+      }
+    }
+
+    .mobile-download-cv {
+      background: transparent;
+      color: var(--accent-color);
+      padding: clamp(12px, 2.5vw, 16px) clamp(20px, 4vw, 28px);
+      border-radius: 8px;
+      border: 1.5px solid var(--accent-color);
+      cursor: pointer;
+      font-family: $font-mono;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: all 0.35s ease;
+      text-decoration: none;
+      display: block;
+      width: fit-content;
+      margin: clamp(1.5rem, 3vw, 2.5rem) auto 0;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(6, 182, 212, 0.08);
+        transition: left 0.35s ease;
+        z-index: 0;
+      }
+
+      &:hover {
+        border-color: var(--accent-color);
+        background: rgba(6, 182, 212, 0.08);
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), inset 0 0 15px rgba(6, 182, 212, 0.05);
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      &:active {
+        transform: scale(0.98);
       }
     }
   }

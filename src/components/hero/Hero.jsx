@@ -51,11 +51,6 @@ const Hero = () => {
             </motion.h1>
           </motion.div>
 
-          {/* <p className="description">
-            Building scalable architectures with <span className="highlight">Modern Frameworks</span> 
-            and precision-engineered user interfaces.
-          </p> */}
-
           {/* <div className="cta-group">
             <motion.a 
               whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(100, 255, 218, 0.2)" }}
@@ -68,6 +63,30 @@ const Hero = () => {
               SEE_WORKS_02/
             </Link>
           </div> */}
+
+          {/* CTA Buttons */}
+          <div className="cta-buttons">
+            <motion.a
+              href="/AshishDhakalCV.pdf"
+              download
+              className="btn-primary-cta"
+              whileHover={{ y: -5, scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <span className="btn-text">📥 DOWNLOAD_CV</span>
+              <span className="btn-arrow">→</span>
+            </motion.a>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              
+            </motion.div>
+          </div>
         </motion.div>
 
         <motion.div 

@@ -5,12 +5,12 @@ import "./services.scss";
 
 const data = {
   work: [
-    { id: "SYS_01", company: "Geofinity Solutions", role: "System Developer", period: "2024 — PRES", details: ["Architecting Scalable Logic", "DB Optimization", "CI/CD Pipeline"], icon: <Rocket size={18}/> },
-    { id: "SYS_02", company: "Pahadi Research", role: "R&D Intern", period: "2023 — 2024", details: ["Emerging Tech Research", "System QA", "Data Analysis"], icon: <Zap size={18}/> }
+    { id: "SYS_01", company: "Geofinity Solutions ", location : "Baluwatar, Kathmandu", role: "System Developer", period: "SEP 2024 — PRESENT", details: ["Frappe Healthcare Implementation", "ERPNEXT", "Django "], icon: <Rocket size={18}/> },
+    { id: "SYS_02", company: "Pahadi Research", location: "Seattle, USA", role: "Intern", period: "2023 — 2024", details: ["Emerging Tech Research", "System QA", "Flutter"], icon: <Zap size={18}/> }
   ],
   education: [
-    { id: "EDU_01", inst: "ACEM / TU", degree: "Computer Engineering", period: "2019 — 2024", score: "85%" },
-    { id: "EDU_02", inst: "NIST", degree: "Physical Science", period: "2017 — 2018", score: "100%" }
+    { id: "EDU_01", inst: "Advanced College of Engineering", location: "Kalanki, Kathmandu", degree: "Computer Engineering", period: "2019 — 2024" },
+    { id: "EDU_02", inst: "National School of Science", location: "Lainchaur, Kathmandu", degree: "+2 Science", period: "2017 — 2018" }
   ]
 };
 
@@ -34,7 +34,7 @@ const Services = () => {
           {/* Work Stream */}
           <div className="stream-section">
             <div className="stream-header">
-              <Briefcase size={14} /> <span>ACTIVE_OPERATIONS</span>
+              <Briefcase size={14} /> <span>WORK_EXPERIENCE</span>
             </div>
             
             <div className="nodes-container">
@@ -97,7 +97,9 @@ const SchematicNode = ({ item, type, onHover, isDimmed }) => {
           <div className="top">
             <span className="period">{item.period}</span>
             <span className="category">{type === 'work' ? item.company : item.score}</span>
+           
           </div>
+          <div className="location-info">📍 {item.location}</div>
           <h3>{type === 'work' ? item.role : item.degree}</h3>
           {type === 'edu' && <p className="inst">{item.inst}</p>}
         </div>

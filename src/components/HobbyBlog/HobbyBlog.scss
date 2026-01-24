@@ -382,11 +382,15 @@
   background: var(--bg-card);
   max-width: 600px;
   width: 100%;
+  max-height: 85vh;
   padding: clamp(30px, 5vw, 45px);
   border-radius: 16px;
   border: 1px solid var(--border-color);
   position: relative;
   transition: all 0.3s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 
   .close-x {
     position: absolute;

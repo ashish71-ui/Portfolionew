@@ -4,27 +4,228 @@ import { BookOpen, Calendar, ArrowRight, Tag, Music, Hash, Clock } from 'lucide-
 import "./HobbyBlog.scss";
 
 const pianoKeysData = [
-  { note: 'C', sargam: '', type: 'white', icon: '☕', content: { topic: 'Morning Rituals', description: 'Starting the day with intention and mindful coffee.' }},
+  {
+    note: 'C',
+    sargam: '',
+    type: 'white',
+    icon: '☕',
+    content: {
+      topic: 'Slow Mornings',
+      description: 'Mornings begin quietly—with coffee, soft light, and unhurried thoughts. It’s the time I reflect, plan, and mentally sketch the day ahead before the noise of responsibilities takes over.'
+    }
+  },
   { note: 'C#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'D', sargam: '', type: 'white', icon: '💻', content: { topic: 'Coding Sessions', description: 'Late night debugging and creative problem solving.' }},
+
+  {
+    note: 'D',
+    sargam: '',
+    type: 'white',
+    icon: '💻',
+    content: {
+      topic: 'Coding & Curiosity',
+      description: 'Coding is where logic meets creativity. I enjoy breaking complex problems into simple ideas, experimenting with solutions, and learning through trial, error, and persistence—especially during late-night coding sessions.'
+    }
+  },
   { note: 'D#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'E', sargam: '', type: 'white', icon: '🎸', content: { topic: 'Guitar Practice', description: 'Strings and melodies, expressing emotions through music.' }},
-  { note: 'F', sargam: '', type: 'white', icon: '📷', content: { topic: 'Photography', description: 'Capturing fleeting moments and urban landscapes.' }},
+
+  {
+    note: 'E',
+    sargam: '',
+    type: 'white',
+    icon: '🎸',
+    content: {
+      topic: 'Guitar & Jamming',
+      description: 'Guitar sessions are my escape. Whether playing alone or jamming with friends, it’s about feeling the music, improvising freely, and letting emotions flow through melodies rather than aiming for perfection.'
+    }
+  },
+
+  {
+    note: 'F',
+    sargam: '',
+    type: 'white',
+    icon: '🧑‍🤝‍🧑',
+    content: {
+      topic: 'Gathering with Friends',
+      description: 'Time spent with friends is a mix of laughter, deep conversations, and random debates. These moments—often over tea or food—turn ordinary days into memories that quietly shape who I am.'
+    }
+  },
   { note: 'F#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'G', sargam: '', type: 'white', icon: '🏃', content: { topic: 'Running', description: 'Miles of freedom on mountain trails and city streets.' }},
+
+  {
+    note: 'G',
+    sargam: '',
+    type: 'white',
+    icon: '✈️',
+    content: {
+      topic: 'Travel & Exploring',
+      description: 'Travel feeds my curiosity. I love exploring unfamiliar places, walking without a plan, discovering local stories, and experiencing cultures firsthand—collecting perspectives rather than just photographs.'
+    }
+  },
   { note: 'G#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'A', sargam: '', type: 'white', icon: '🍳', content: { topic: 'Cooking', description: 'Experimenting with flavors from around the world.' }},
+
+  {
+    note: 'A',
+    sargam: '',
+    type: 'white',
+    icon: '😂',
+    content: {
+      topic: 'Humor & Lightness',
+      description: 'Humor keeps life balanced. I enjoy finding laughter in everyday situations, sharing jokes, and not taking myself too seriously—because sometimes a smile solves more than overthinking ever could.'
+    }
+  },
   { note: 'A#', sargam: '', type: 'black', icon: '', content: null },
-  { note: 'B', sargam: '', type: 'white', icon: '📚', content: { topic: 'Reading', description: 'Exploring new worlds through literature and philosophy.' }},
-  { note: 'C\'', sargam: '', type: 'white', icon: '🧘', content: { topic: 'Meditation', description: 'Finding stillness and clarity in the chaos.' }},
+
+  {
+    note: 'B',
+    sargam: '',
+    type: 'white',
+    icon: '✍️',
+    content: {
+      topic: 'Blogging & Reflection',
+      description: 'Writing helps me organize thoughts. Through blogging, I reflect on technology, personal growth, and lessons learned—turning experiences into words so ideas don’t fade with time.'
+    }
+  },
+
+  {
+    note: "C'",
+    sargam: '',
+    type: 'white',
+    icon: '🧘',
+    content: {
+      topic: 'Stillness',
+      description: 'In moments of stillness, I disconnect from constant motion. Meditation helps me reset, stay grounded, and reconnect with clarity—creating space between who I was yesterday and who I aim to be.'
+    }
+  }
 ];
 
 const autoPlayPattern = [0, 2, 4, 5, 7, 9, 11, 12]; // Sa Re Ga Ma Pa Dha Ni Sa
 
 const blogPosts = [
-  { id: 1, title: "Building My First Full-Stack Application", excerpt: "A deep dive into React, Node, and MongoDB architecture.", date: "Mar 15, 2024", readTime: "5 min", tags: ["React", "Node"], category: "Tech", stringIndex: 0, color: '#FF6B6B' },
-  { id: 2, title: "Trekking Through the Himalayas", excerpt: "Chasing horizons in the heart of the world's highest peaks.", date: "Feb 28, 2024", readTime: "8 min", tags: ["Nepal", "Travel"], category: "Travel", stringIndex: 1, color: '#4ECDC4' },
-  { id: 3, title: "The Art of Minimalist Design", excerpt: "Why removing elements is often harder than adding them.", date: "Feb 10, 2024", readTime: "6 min", tags: ["UI/UX", "Design"], category: "Design", stringIndex: 2, color: '#45B7D1' },
+  {
+    id: 1,
+    title: "From Django Views to Real-World Products",
+    excerpt: "Lessons learned while turning backend logic into usable, human-friendly applications.",
+    date: "Mar 18, 2024",
+    readTime: "6 min",
+    tags: ["Django", "Backend", "WebDev"],
+    category: "Tech",
+    stringIndex: 0,
+    color: "#FF6B6B",
+    content: `
+When I first started learning Django, everything felt straightforward.
+Views returned responses, models stored data, and templates rendered pages.
+If the application worked, I considered it complete.
+
+But real-world projects quickly changed that perspective.
+
+### When “Working” Is Not Enough
+Tutorial projects focus on functionality—forms submit, APIs respond, data saves.
+In real applications, users care about something deeper:
+clarity, flow, and trust.
+
+I learned that backend development isn’t just about writing correct logic,
+but about designing systems that **feel predictable and reliable**.
+
+### The Evolution of My Code
+Earlier, my Django views handled everything:
+queries, validation, business logic, and responses.
+
+Over time, I started separating concerns:
+- Business logic moved into services
+- Validation became explicit
+- Views became simpler and more readable
+
+This shift made my code easier to debug, test, and extend.
+
+### Thinking Beyond the Database
+A backend system eventually serves people, not tables.
+Error messages, response timing, and edge cases suddenly mattered more than clever queries.
+
+The biggest lesson?
+Good backend code is invisible—but bad backend code is unforgettable.
+
+### Still Learning
+I’m still learning how to design scalable APIs,
+write cleaner abstractions, and prepare systems for change.
+But every project teaches me how software quietly shapes user experience.
+`
+  },
+
+  {
+    id: 2,
+    title: "Playing Guitar After a Long Day of Coding",
+    excerpt: "How music helps me reset my mind when logic starts feeling too heavy.",
+    date: "Feb 14, 2024",
+    readTime: "4 min",
+    tags: ["Guitar", "Music", "Balance"],
+    category: "Music",
+    stringIndex: 1,
+    color: "#45B7D1",
+    content: `
+After hours of staring at code, my mind reaches a point where logic feels heavy.
+That’s usually when I pick up my guitar.
+
+### Music as a Mental Reset
+Coding requires structure, precision, and constant problem-solving.
+Music asks for something different—emotion, flow, and presence.
+
+Playing guitar helps me disconnect from screens
+and reconnect with something more instinctive.
+
+### No Perfection, Just Expression
+I don’t aim for perfection when I play.
+Sometimes it’s just simple chords, familiar songs, or random improvisation.
+
+Those imperfect moments do something important:
+they remind me that creativity doesn’t always need rules.
+
+### How Music Makes Me a Better Developer
+Strangely, music improves my coding too.
+After a short session, I return with:
+- A calmer mind
+- Better focus
+- Fresh perspective on problems
+
+Balance matters.
+And for me, guitar strings often solve problems that logic alone can’t.
+`
+  },
+
+  {
+    id: 3,
+    title: "Exploring Kathmandu Without a Destination",
+    excerpt: "Wandering familiar streets, finding new perspectives, and enjoying unplanned moments.",
+    date: "Jan 30, 2024",
+    readTime: "7 min",
+    tags: ["Nepal", "Exploring", "Life"],
+    category: "Travel",
+    stringIndex: 2,
+    color: "#FFA07A",
+    content: `
+Kathmandu is familiar to me, yet it constantly surprises me.
+Some of my best experiences come from walking without a destination.
+
+### The Beauty of Wandering
+When there’s no plan, curiosity takes control.
+A small café, a quiet alley, a random conversation—
+these moments don’t appear on maps.
+
+### Familiar Streets, New Eyes
+Exploring without purpose changes how I see the city.
+Places I once rushed past suddenly feel meaningful.
+
+It reminds me that exploration isn’t always about distance—
+sometimes it’s about attention.
+
+### Lessons Beyond Travel
+Wandering teaches patience.
+It teaches observation.
+And it teaches comfort with uncertainty.
+
+The same lessons quietly apply to life and learning:
+you don’t always need a clear endpoint to move forward.
+`
+  },
   { id: 4, title: "Learning Guitar: Zero to Hero", excerpt: "The rhythmic struggle of mastering the six-string beast.", date: "Jan 22, 2024", readTime: "7 min", tags: ["Music", "Hobby"], category: "Music", stringIndex: 3, color: '#FFA07A' },
   { id: 5, title: "Tokyo After Dark", excerpt: "Exploring neon duality through long-exposure photography.", date: "Jan 10, 2024", readTime: "4 min", tags: ["Japan", "Street"], category: "Travel", stringIndex: 4, color: '#98D8C8' },
   { id: 6, title: "The Joy of Slow Cooking", excerpt: "Redefining patience through the lens of a cast-iron pot.", date: "Dec 28, 2023", readTime: "6 min", tags: ["Food", "Life"], category: "Lifestyle", stringIndex: 5, color: '#F7DC6F' }
@@ -43,7 +244,7 @@ const HobbyBlog = () => {
       const keyIndex = autoPlayPattern[patternIndexRef.current];
       setActiveKey(keyIndex);
       patternIndexRef.current = (patternIndexRef.current + 1) % autoPlayPattern.length;
-    }, 1200);
+    }, 1600);
     return () => clearInterval(interval);
   }, []);
 
@@ -216,9 +417,15 @@ const HobbyBlog = () => {
                   {selectedPost.tags.map(t => <span key={t} className="tag">#{t}</span>)}
                 </div>
                 <div className="filler-text">
-                  This blog resonance is anchored on <strong>String {selectedPost.stringIndex + 1}</strong>. 
-                  In the full version, you would find technical documentation, high-resolution photography, 
-                  and the creative process behind this specific frequency of thought.
+                  {selectedPost.content.split('\n').map((line, idx) => {
+                    if (line.trim().startsWith('###')) {
+                      return <h4 key={idx} style={{ marginTop: '20px', marginBottom: '10px', fontSize: '1.1em', fontWeight: '600' }}>{line.replace('###', '').trim()}</h4>;
+                    }
+                    if (line.trim()) {
+                      return <p key={idx} style={{ marginBottom: '12px', lineHeight: '1.6' }}>{line}</p>;
+                    }
+                    return <br key={idx} />;
+                  })}
                 </div>
               </div>
             </motion.div>

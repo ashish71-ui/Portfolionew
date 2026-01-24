@@ -186,18 +186,12 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="skills-header"
+          className="terminal-header"
         >
-          <div className="header-title">
-           
-            <h2 className="main-title">MY TOOLKIT</h2>
-           
+          <div className="status-bar">
+            <span className="blink">●</span> SYSTEM_CORE_ACTIVE
           </div>
-          
-          <p className="header-subtitle">
-            <Binary className="inline-icon" size={16} />
-            NEURAL_INTERFACE.v3.0
-          </p>
+          <h2 className="glitch-title" data-text="MY TOOLKIT">MY TOOLKIT</h2>
         </motion.div>
 
         {/* Console Layout - Side by Side */}
@@ -224,6 +218,7 @@ const Skills = () => {
                     {React.createElement(skill.icon, { size: 28 })}
                   </div>
                   <span className="tool-name">{skill.name}</span>
+                  <span className="tool-category">{skill.category}</span>
                   {activeIdx === i && (
                     <motion.div
                       className="active-indicator"
